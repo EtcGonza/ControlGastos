@@ -1,0 +1,60 @@
+<form [formGroup]="formularioDeuda" (ngSubmit)="crearDeuda()">
+
+    <!-- Input Nombre -->
+
+    <ion-item class="ion-margin-top" color="aqua">
+        <ion-label color="pearl" position="floating">Nombre</ion-label>
+        <ion-input color="pearl" debounce="700" type="text" minlength="2" maxlength="20" formControlName="nombre" required></ion-input>
+    </ion-item>
+
+    <!-- Input Monto -->
+
+    <ion-item class="ion-margin-top" color="aqua">
+        <ion-label color="pearl" position="floating">Monto($)</ion-label>
+        <ion-input color="pearl" debounce="700" type="number" minlength="2" maxlength="20" formControlName="monto" required></ion-input>
+    </ion-item>
+
+
+    <!-- Inputs Sexo -->
+
+    <ion-list class="ion-list">
+        <ion-radio-group formControlName="sexo">
+            <ion-list-header>
+                <ion-label class="titulo-header" color="pearl">Sexo</ion-label>
+            </ion-list-header>
+
+            <ion-item color="aqua">
+                <ion-label>Hombre</ion-label>
+                <ion-radio color="pearl" slot="start" value="hombre"></ion-radio>
+            </ion-item>
+
+            <ion-item color="aqua">
+                <ion-label>Mujer</ion-label>
+                <ion-radio color="pearl" slot="start" value="mujer"></ion-radio>
+            </ion-item>
+
+        </ion-radio-group>
+    </ion-list>
+
+    <!-- Input Tipo de Deuda -->
+
+    <ion-segment color="pearl" class="ion-margin-top" formControlName="tipo">
+        <ion-segment-button value="pagar">
+            <ion-label>Pagar</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="cobrar">
+            <ion-label>Cobrar</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+    <!-- Boton para crear Deuda -->
+    <div class="contenedor-boton ion-margin-top">
+        <ion-button type="submit" size="large" color="pearl" [disabled]="formularioDeuda.invalid" (click)="goBack()">
+            <ion-text color="aqua">
+                Crear Deuda
+            </ion-text>
+            <img class="icono" src="/assets/icons/checked.svg">
+        </ion-button>
+    </div>
+
+</form>

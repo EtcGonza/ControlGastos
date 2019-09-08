@@ -1,0 +1,35 @@
+.item-has-focus {
+    --highlight-color-focused: none !important;
+    --highlight-color-invalid: none !important;
+    --highlight-color-valid: none !important;
+    color: none !important;
+}
+
+.ion-invalid {
+    --highlight-color-focused: none !important;
+    --highlight-color-invalid: none !important;
+    --highlight-color-valid: none !important;
+    color: none !important;
+}
+
+.item-label-floating {
+    --highlight-color-focused: none !important;
+    --highlight-color-invalid: none !important;
+    --highlight-color-valid: none !important;
+    color: none !important;
+}
+
+.contenedor-boton {
+    display: flex;
+    justify-content: center;
+}
+
+.titulo-header {
+    font-size: 1.8rem;
+}
+
+.icono {
+    width: 3.8rem;
+    height: 3.8rem;
+    margin-left: 1rem;
+}

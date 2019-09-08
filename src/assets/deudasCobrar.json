@@ -1,0 +1,64 @@
+[{
+        "Tipo": "Cobrar",
+        "id": "15068768AS416sdf8q1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 150,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/hombre/hombre_4.svg"
+    },
+    {
+        "Tipo": "Cobrar",
+        "id": "15068768AS41fwe68q1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 1720,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/hombre/hombre_7.svg"
+    },
+
+    {
+        "Tipo": "Cobrar",
+        "id": "15068768AS475168q1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 150,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/hombre/hombre_2.svg"
+    },
+    {
+        "Tipo": "Cobrar",
+        "id": "15068768ASas4168q1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 1550,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/mujeres/mujer_5.svg"
+    },
+    {
+        "Tipo": "Cobrar",
+        "id": "15068768AS4168qfgn1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 150,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/mujeres/mujer_2.svg"
+    },
+
+    {
+        "Tipo": "Cobrar",
+        "id": "15068768AS41682q1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 2150,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/mujeres/mujer_1.svg"
+    }
+
+]

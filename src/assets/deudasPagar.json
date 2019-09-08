@@ -1,0 +1,52 @@
+[{
+        "Tipo": "Pagar",
+        "id": "15068768A7S4168q1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 10,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/hombre/hombre_1.svg"
+    },
+    {
+        "Tipo": "Pagar",
+        "id": "15068768AS416hj8q1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 1580,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/mujeres/mujer_7.svg"
+    },
+    {
+        "Tipo": "Pagar",
+        "id": "15068768AS4168q1vbnwq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 150,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/hombre/hombre_6.svg"
+    },
+
+    {
+        "Tipo": "Pagar",
+        "id": "15068768AS4168djyq1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 150,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/mujeres/mujer_3.svg"
+    },
+    {
+        "Tipo": "Pagar",
+        "id": "15068768AS416ndyr8q1wq21w3",
+        "Nombre": "Gonzalo",
+        "Monto": 1500,
+        "FechaCreada": 5,
+        "Completada": false,
+        "FechaFinalizada": false,
+        "AvatarPath": "/assets/personas-icons/mujeres/mujer_4.svg"
+    }
+]
