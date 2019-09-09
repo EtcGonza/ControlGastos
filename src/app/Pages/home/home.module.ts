@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { ComponentsModule } from '../../Components/components.module';
 
+
 @NgModule({
   imports: [
     CommonModule,

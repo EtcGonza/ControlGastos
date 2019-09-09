@@ -1,0 +1,40 @@
+<!-- List of Text Items -->
+<ion-list class="ion-list ion-padding-top">
+
+    <ion-list-header>
+        <ion-text color="orange" class="centrar-texto ion-list-header">
+            <ion-label>Hoy</ion-label>
+        </ion-text>
+    </ion-list-header>
+
+    <ion-item color="aqua">
+        <ion-thumbnail slot="start">
+            <img src="/assets/icons/money.svg">
+        </ion-thumbnail>
+        <ion-label class="nombre" color="pearl">
+            <ion-text>
+                <h3 class="nombre">Medicamentos</h3>
+                <p class="monto">Monto: $250</p>
+                <p class="fecha">Fecha: hoy</p>
+            </ion-text>
+        </ion-label>
+    </ion-item>
+
+</ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="redOrange" (click)="crearGasto()">
+        <ion-icon name="add" color="pearl"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

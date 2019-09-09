@@ -14,9 +14,11 @@ import { PresentacionDeudasComponent } from './Deuda_Components/presentacion-deu
 import { ListaDeudaComponent } from './Deuda_Components/lista-deuda/lista-deuda.component';
 import { CrearDeudaComponent } from './Deuda_Components/crear-deuda/crear-deuda.component';
 import { CardDeudaComponent } from './Deuda_Components/card-deuda/card-deuda.component';
+import { PresentacionGastosComponent } from './Gastos_Components/presentacion-gastos/presentacion-gastos.component';
+import { CrearGastoComponent } from './Gastos_Components/crear-gasto/crear-gasto.component';
+import { ModalIconGastosPage } from '../Pages/General_Pages/modal-icon-gastos/modal-icon-gastos.page';
 
 // Pipes
-import { SinCompletarPipe } from '../Pipes/sin-completar.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,10 @@ import { SinCompletarPipe } from '../Pipes/sin-completar.pipe';
     ListaDeudaComponent,
     CrearDeudaComponent,
     CardDeudaComponent,
-    SinCompletarPipe
+    PresentacionGastosComponent,
+    CrearGastoComponent,
+    ModalIconGastosPage,
+
   ],
   exports: [
     HeaderComponent,
@@ -36,6 +41,8 @@ import { SinCompletarPipe } from '../Pipes/sin-completar.pipe';
     PresentacionCardsComponent,
     PresentacionDeudasComponent,
     CrearDeudaComponent,
+    PresentacionGastosComponent,
+    CrearGastoComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +50,9 @@ import { SinCompletarPipe } from '../Pipes/sin-completar.pipe';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+  ],
+  entryComponents:[
+    ModalIconGastosPage
   ]
 })
 export class ComponentsModule { }

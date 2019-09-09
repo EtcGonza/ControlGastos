@@ -1,0 +1,46 @@
+<form [formGroup]="formularioGasto" (ngSubmit)="crearGasto()">
+
+    <!-- Input Nombre -->
+
+    <ion-item class="ion-margin-top" color="aqua">
+        <ion-label color="pearl" position="floating">Descripcion</ion-label>
+        <ion-input color="pearl" debounce="700" type="text" minlength="2" maxlength="30" formControlName="descripcion" required></ion-input>
+    </ion-item>
+
+    <!-- Input Monto -->
+
+    <ion-item class="ion-margin-top" color="aqua">
+        <ion-label color="pearl" position="floating">Monto($)</ion-label>
+        <ion-input color="pearl" debounce="700" type="number" minlength="2" maxlength="10" formControlName="monto" required></ion-input>
+    </ion-item>
+
+    <!-- Input Tipo de Gasto -->
+
+    <ion-segment color="pearl" class="ion-margin-top" formControlName="tipo">
+        <ion-segment-button value="pasivo">
+            <ion-label>Pasivo</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="activo">
+            <ion-label>Activo</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+
+    <!-- Seleccionar Icono -->
+    <div class="contenedor-boton ion-margin-top">
+        <ion-button expand="block" size="outline" fill="clear" color="pearl" (click)="presentModal()">
+            Elegir Icono
+        </ion-button>
+    </div>
+
+    <!-- Boton para crear Gasto -->
+    <div class="contenedor-boton ion-margin-top">
+        <ion-button type="submit" size="large" color="pearl" [disabled]="formularioGasto.invalid" (click)="goBack()">
+            <ion-text color="aqua">
+                Crear Gasto
+            </ion-text>
+            <img class="icono" src="/assets/icons/checked.svg">
+        </ion-button>
+    </div>
+
+</form>
