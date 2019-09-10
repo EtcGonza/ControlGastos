@@ -8,7 +8,7 @@
             <ion-text>
                 <h3 class="nombre">{{this.deuda.Nombre}}</h3>
                 <p class="monto">Monto: ${{this.deuda.Monto}}</p>
-                <p class="fecha">Fecha: {{this.deuda.FechaCreada}}</p>
+                <p class="fecha">Fecha: {{this.deuda.FechaCreada | momentPipe}}</p>
             </ion-text>
         </ion-label>
     </ion-item>

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ModalIconGastosPage } from './modal-icon-gastos.page';
 import { ComponentsModule } from '../../../Components/components.module';
-import { IconsCategoriaPipe } from '../../../Pipes/icons-categoria.pipe';
+import { PipesModule } from '../../../Pipes/pipes.module';
 
 const routes: Routes = [
   {
@@ -21,12 +21,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     ComponentsModule,
+    PipesModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  providers: [
-    IconsCategoriaPipe
-  ],
-  declarations: [ModalIconGastosPage, IconsCategoriaPipe],
+  providers: [],
+  declarations: [ModalIconGastosPage],
 })
 export class ModalIconGastosPageModule {}

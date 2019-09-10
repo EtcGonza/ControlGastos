@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IconsCategoriaPipe } from '../../../Pipes/icons-categoria.pipe';
+import { IconsSlidesComponent } from '../../../Components/Gastos_Components/icons-slides/icons-slides.component';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-icon-gastos',
@@ -11,19 +12,17 @@ import { IconsCategoriaPipe } from '../../../Pipes/icons-categoria.pipe';
 export class ModalIconGastosPage implements OnInit {
 
   iconPath: any[] = [];
+  icono: string;
 
-  constructor(private http: HttpClient,
-              public pipeIconos: IconsCategoriaPipe) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.getIcons();
   }
 
   getIcons() {
-    // console.log(this.http.get('/assets/icons/icons.json'));
     this.http.get('/assets/icons/icons.json').subscribe( (data: any) => {
       this.iconPath = data;
-      console.log(this.iconPath);
     });
   }
 

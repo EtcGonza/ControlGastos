@@ -1,225 +1,225 @@
 [{
         "path": "ball.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "basketball.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "bill.svg",
-        "category": "Impuestos"
+        "categoria": "Impuestos"
     },
     {
         "path": "birthday-cake.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "burger.svg",
-        "category": "Comida"
+        "categoria": "Comida"
     },
     {
         "path": "bus-ticket.svg",
-        "category": "Transporte"
+        "categoria": "Transporte"
     },
     {
         "path": "bus.svg",
-        "category": "Transporte"
+        "categoria": "Transporte"
     },
     {
         "path": "car-repair.svg",
-        "category": "Transporte"
+        "categoria": "Transporte"
     },
     {
         "path": "champagne.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "cinema.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "coffee.svg",
-        "category": "Comida"
+        "categoria": "Comida"
     },
     {
         "path": "contract.svg",
-        "category": "Impuestos"
+        "categoria": "Impuestos"
     },
     {
         "path": "controller.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "credit-card_2.svg",
-        "category": "Impuestos"
+        "categoria": "Impuestos"
     },
     {
         "path": "credit-card.svg",
-        "category": "Impuestos"
+        "categoria": "Impuestos"
     },
     {
         "path": "dance.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "disco-ball.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "dog.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "dress.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "fast-food.svg",
-        "category": "Comida"
+        "categoria": "Comida"
     },
     {
         "path": "fuel.svg",
-        "category": "Transporte"
+        "categoria": "Transporte"
     },
     {
         "path": "game-console(1).svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "game-console(2).svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "game-console.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "game-controller.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "glass.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "groceries.svg",
-        "category": "Comida"
+        "categoria": "Comida"
     },
     {
         "path": "happy.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "headphones.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "hoodie.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "house.svg",
-        "category": "Impuestos"
+        "categoria": "Impuestos"
     },
     {
         "path": "joystick.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "lifter.svg",
-        "category": "Transporte"
+        "categoria": "Transporte"
     },
     {
         "path": "mask.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "medicine.svg",
-        "category": "Salud"
+        "categoria": "Salud"
     },
     {
         "path": "money_2.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "money.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "motocross.svg",
-        "category": "Transporte"
+        "categoria": "Transporte"
     },
     {
         "path": "music.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "notebook.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "piggy-bank.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "pills.svg",
-        "category": "Salud"
+        "categoria": "Salud"
     },
     {
         "path": "pint.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "pokemon.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "popcorn.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "printer.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "scale.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "shirt.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "shopping-cart.svg",
-        "category": "Comida"
+        "categoria": "Comida"
     },
     {
         "path": "soccer.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "swimming.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "tennis.svg",
-        "category": "Entretenimiento"
+        "categoria": "Entretenimiento"
     },
     {
         "path": "trousers.svg",
-        "category": "Otros"
+        "categoria": "Otros"
     },
     {
         "path": "vechicle.svg",
-        "category": "Transporte"
+        "categoria": "Transporte"
     },
     {
         "path": "wifi (1).svg",
-        "category": "Impuestos"
+        "categoria": "Impuestos"
     },
     {
         "path": "wifi.svg",
-        "category": "Impuestos"
+        "categoria": "Impuestos"
     }
 ]

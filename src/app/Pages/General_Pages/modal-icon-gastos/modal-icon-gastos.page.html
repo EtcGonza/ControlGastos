@@ -4,10 +4,28 @@
     <ion-grid fixed>
 
         <ion-row>
-            <ion-col size="6" *ngFor="let imagen of iconPath | iconsCategoria:'asdasd'">
-                <ion-item button="true" color="aqua" lines="none">
-                    <img class="galeria icono" src="/assets/icons/{{imagen.path}}">
-                </ion-item>
+            <ion-col size="12">
+                <app-icons-slides [categoria]="'Entretenimiento'" [iconos]="iconPath"></app-icons-slides>
+            </ion-col>
+
+            <ion-col size="12">
+                <app-icons-slides [categoria]="'Salud'" [iconos]="iconPath"></app-icons-slides>
+            </ion-col>
+
+            <ion-col size="12">
+                <app-icons-slides [categoria]="'Comida'" [iconos]="iconPath"></app-icons-slides>
+            </ion-col>
+
+            <ion-col size="12">
+                <app-icons-slides [categoria]="'Transporte'" [iconos]="iconPath"></app-icons-slides>
+            </ion-col>
+
+            <ion-col size="12">
+                <app-icons-slides [categoria]="'Impuestos'" [iconos]="iconPath"></app-icons-slides>
+            </ion-col>
+
+            <ion-col size="12">
+                <app-icons-slides [categoria]="'Otros'" [iconos]="iconPath"></app-icons-slides>
             </ion-col>
         </ion-row>
 

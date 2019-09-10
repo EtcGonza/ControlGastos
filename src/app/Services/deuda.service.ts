@@ -1,6 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 import { Deuda } from '../Models/deudaInterface';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +22,7 @@ export class DeudaService {
   crearDeuda(tipo: string , nombre: string, monto: number, sexo: string) {
 
     // tslint:disable-next-line: prefer-const
-    let insertarDeuda: Deuda = this.setearDeuda();
-
-    insertarDeuda.AvatarPath = this.asignarAvatar(sexo);
-    insertarDeuda.Completada = false;
-    insertarDeuda.FechaCreada = Date().toString();
-    insertarDeuda.Monto = monto;
-    insertarDeuda.Nombre = nombre;
-    insertarDeuda.id = uuid();
+    let insertarDeuda: Deuda = this.setDeuda(nombre, monto, sexo);
 
     if (tipo === 'pagar') {
       insertarDeuda.Tipo = 'Pagar';
@@ -98,34 +93,33 @@ export class DeudaService {
   completarDeuda(deuda: Deuda) {
 
     deuda.Completada = true;
-    deuda.FechaCompletado = new Date().toString();
+    deuda.FechaCompletado = moment().locale('es').format('dddd, D MMMM');
 
     if (deuda.Tipo === 'Pagar') {
       this.completadasPagar.unshift(deuda);
-      // console.log('Deuda Completada', this.completadasPagar);
       this.eliminarDeuda(deuda.id, deuda.Tipo);
 
     } else if (deuda.Tipo === 'Cobrar') {
       this.completadasCobrar.unshift(deuda);
-      // console.log('Deuda Completada', this.completadasCobrar);
       this.eliminarDeuda(deuda.id, deuda.Tipo);
     }
 
   }
 
-  setearDeuda() {
+  setDeuda(nombre: string, monto: number, sexo: string) {
 
     const setearDeuda: Deuda = {
       Tipo: 'Pagar',
-      id: '',
-      Nombre: '',
-      Monto: 0,
-      FechaCreada: null,
+      id: uuid(),
+      Nombre: nombre,
+      Monto: monto,
+      FechaCreada: moment().locale('es'),
       Completada: false,
       FechaCompletado: false,
-      AvatarPath: '',
+      AvatarPath: this.asignarAvatar(sexo),
     };
-
     return setearDeuda;
   }
 }
+
+// moment().locale('es').format('dddd, D MMMM'),

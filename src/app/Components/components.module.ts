@@ -17,8 +17,11 @@ import { CardDeudaComponent } from './Deuda_Components/card-deuda/card-deuda.com
 import { PresentacionGastosComponent } from './Gastos_Components/presentacion-gastos/presentacion-gastos.component';
 import { CrearGastoComponent } from './Gastos_Components/crear-gasto/crear-gasto.component';
 import { ModalIconGastosPage } from '../Pages/General_Pages/modal-icon-gastos/modal-icon-gastos.page';
+import { IconsSlidesComponent } from './Gastos_Components/icons-slides/icons-slides.component';
 
 // Pipes
+import { PipesModule } from 'src/app/Pipes/pipes.module';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { ModalIconGastosPage } from '../Pages/General_Pages/modal-icon-gastos/mo
     PresentacionGastosComponent,
     CrearGastoComponent,
     ModalIconGastosPage,
+    IconsSlidesComponent,
 
   ],
   exports: [
@@ -43,12 +47,14 @@ import { ModalIconGastosPage } from '../Pages/General_Pages/modal-icon-gastos/mo
     CrearDeudaComponent,
     PresentacionGastosComponent,
     CrearGastoComponent,
+    IconsSlidesComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
     RouterModule,
     FormsModule,
+    PipesModule,
     ReactiveFormsModule,
   ],
   entryComponents:[

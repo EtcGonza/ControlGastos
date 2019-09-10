@@ -1,0 +1,11 @@
+<ion-text>
+    <h4>{{categoria}}</h4>
+</ion-text>
+
+<ion-slides [options]="slideOpts" pager="false">
+    <ion-slide *ngFor="let icono of iconos | iconsCategoria:categoria">
+        <ion-item button="true" color="aqua" lines="none" (click)="dismiss(icono)">
+            <img class="galeria icono" src="/assets/icons/{{icono.path}}">
+        </ion-item>
+    </ion-slide>
+</ion-slides>

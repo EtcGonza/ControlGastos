@@ -1,7 +1,31 @@
+import { Moment } from 'moment';
+
+export interface MisGastos {
+    Año: number;
+    Meses: Mes [];
+    GastosAnual: number;
+    ActivoAnual: number;
+    PasivoAnual: number;
+}
+
+export interface Mes {
+    nombreMes: string;
+    MisGastos: GastoMes;
+}
+
+export interface GastoMes {
+    GastoTotalMes: number;
+    PasivoMes: number;
+    ActivoMes: number;
+    Gastos: Gasto [];
+}
+
 export interface Gasto {
     Descripcion: string;
     Monto: number;
     Categoria: string;
-    Tipo: 'Pasivo' | 'Activo';
-    FechaCreacion: Date;
+    Tipo: string;
+    FechaCreacion: string;
+    IconoPath: string;
 }
+
