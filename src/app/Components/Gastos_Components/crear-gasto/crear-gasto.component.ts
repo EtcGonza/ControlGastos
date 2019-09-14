@@ -60,7 +60,6 @@ export class CrearGastoComponent implements OnInit {
 
     await modal.present();
     const { data } = await modal.onDidDismiss();
-    console.log(data.iconoPath);
     this.objectoIcono = data;
    }
 

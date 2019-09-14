@@ -10,7 +10,22 @@
     font-size: 1.5rem;
 }
 
+img {
+    width: 7rem;
+    height: 6.7rem;
+}
+
 .iconos {
-    width: 5rem;
-    width: 5rem;
+    width: 6rem;
+    height: 6rem;
+}
+
+div {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+
+ion-card {
+    width: 85%;
 }
