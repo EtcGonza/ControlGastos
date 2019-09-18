@@ -1,0 +1,23 @@
+.nombre {
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+
+.monto,
+.fecha {
+    font-size: 1.5rem;
+}
+
+ion-thumbnail {
+    --border-radius: 3rem;
+}
+
+div {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+
+ion-card {
+    width: 60%;
+}

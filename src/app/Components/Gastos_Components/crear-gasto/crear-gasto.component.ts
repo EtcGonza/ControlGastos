@@ -15,6 +15,10 @@ export class CrearGastoComponent implements OnInit {
   formularioGasto: FormGroup;
   objectoIcono: any;
   submitted = false;
+  icono = {
+    existe: false,
+    path: ''
+  };
 
   constructor(private formBuilder: FormBuilder,
               private modalCtrl: ModalController,
@@ -61,6 +65,9 @@ export class CrearGastoComponent implements OnInit {
     await modal.present();
     const { data } = await modal.onDidDismiss();
     this.objectoIcono = data;
+    // console.log(this.objectoIcono.iconoPath.path);
+    this.icono.existe = true;
+    this.icono.path = `/assets/icons/${this.objectoIcono.iconoPath.path}`;
    }
 
 }
