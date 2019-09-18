@@ -10,13 +10,9 @@ import { CardComponent } from './Home_Components/card/card.component';
 import { PresentacionCardsComponent } from './Home_Components/presentacion-cards/presentacion-cards.component';
 import { HeaderComponent } from './Generales/header/header.component';
 import { MenuComponent } from './Generales/menu/menu.component';
-import { PresentacionDeudasComponent } from './Deuda_Components/presentacion-deudas/presentacion-deudas.component';
 import { ListaDeudaComponent } from './Deuda_Components/lista-deuda/lista-deuda.component';
-import { CrearDeudaComponent } from './Deuda_Components/crear-deuda/crear-deuda.component';
 import { CardDeudaComponent } from './Deuda_Components/card-deuda/card-deuda.component';
-import { PresentacionGastosComponent } from './Gastos_Components/presentacion-gastos/presentacion-gastos.component';
-import { CrearGastoComponent } from './Gastos_Components/crear-gasto/crear-gasto.component';
-import { ModalIconGastosPage } from '../Pages/General_Pages/modal-icon-gastos/modal-icon-gastos.page';
+import { ModalIconGastosPage } from '../Pages/Gastos_Pages/modal-icon-gastos/modal-icon-gastos.page';
 import { IconsSlidesComponent } from './Gastos_Components/icons-slides/icons-slides.component';
 
 // Pipes
@@ -29,25 +25,17 @@ import { PipesModule } from 'src/app/Pipes/pipes.module';
     PresentacionCardsComponent,
     HeaderComponent,
     MenuComponent,
-    PresentacionDeudasComponent,
     ListaDeudaComponent,
-    CrearDeudaComponent,
     CardDeudaComponent,
-    PresentacionGastosComponent,
-    CrearGastoComponent,
     ModalIconGastosPage,
     IconsSlidesComponent,
-
   ],
   exports: [
     HeaderComponent,
     MenuComponent,
     PresentacionCardsComponent,
-    PresentacionDeudasComponent,
-    CrearDeudaComponent,
-    PresentacionGastosComponent,
-    CrearGastoComponent,
-    IconsSlidesComponent
+    IconsSlidesComponent,
+    ListaDeudaComponent
   ],
   imports: [
     CommonModule,

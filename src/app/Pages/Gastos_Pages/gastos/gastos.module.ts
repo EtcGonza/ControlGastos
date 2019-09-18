@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { GastosPage } from './gastos.page';
-import { ComponentsModule } from '../../Components/components.module';
+import { ComponentsModule } from '../../../Components/components.module';
 
 const routes: Routes = [
   {

@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalController, NavController } from '@ionic/angular';
-import { ModalIconGastosPage } from '../../../Pages/General_Pages/modal-icon-gastos/modal-icon-gastos.page';
 import { GastosService } from '../../../Services/gastos.service';
+import { ModalIconGastosPage } from '../modal-icon-gastos/modal-icon-gastos.page';
 
 @Component({
-  selector: 'app-crear-gasto',
-  templateUrl: './crear-gasto.component.html',
-  styleUrls: ['./crear-gasto.component.scss'],
+  selector: 'app-nuevo-gasto',
+  templateUrl: './nuevo-gasto.page.html',
+  styleUrls: ['./nuevo-gasto.page.scss'],
 })
+export class NuevoGastoPage implements OnInit {
 
-export class CrearGastoComponent implements OnInit {
+  formularioGasto: FormGroup = this.formBuilder.group({
+    descripcion: ['', Validators.required],
+    monto: ['', Validators.required],
+    tipo: ['', Validators.required]
+  });
 
-  formularioGasto: FormGroup;
   objectoIcono: any;
-  submitted = false;
   icono = {
     existe: false,
     path: ''
@@ -25,21 +28,9 @@ export class CrearGastoComponent implements OnInit {
               private navCtrl: NavController,
               private gastosService: GastosService) {}
 
-  ngOnInit() {
-    this.formularioGasto = this.formBuilder.group({
-      descripcion: ['', Validators.required],
-      monto: ['', Validators.required],
-      tipo: ['', Validators.required]
-    });
-  }
-
-  get f() {
-    return this.formularioGasto.controls;
-  }
+  ngOnInit() {}
 
   crearGasto() {
-    this.submitted = true;
-
     this.gastosService.crearGasto(
       this.formularioGasto.value.descripcion,
       this.formularioGasto.value.monto,
@@ -48,16 +39,14 @@ export class CrearGastoComponent implements OnInit {
       this.objectoIcono.iconoPath.path
     );
 
-    if (this.formularioGasto.invalid) {
-      return;
-    }
+    if (this.formularioGasto.invalid) { return; }
   }
 
   goBack() {
     this.navCtrl.navigateRoot(['/gastos']);
   }
 
-  async abrirModal() {
+  async abrirModalIcons() {
     const modal = await this.modalCtrl.create({
        component: ModalIconGastosPage
      });

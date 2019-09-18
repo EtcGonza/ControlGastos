@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ListaDeudasPage } from './lista-deudas.page';
-import { ComponentsModule } from '../../Components/components.module';
+import { NuevoGastoPage } from './nuevo-gasto.page';
+import { ComponentsModule } from '../../../Components/components.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: ListaDeudasPage
+    component: NuevoGastoPage
   }
 ];
 
@@ -19,10 +19,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     ComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ListaDeudasPage]
+  declarations: [NuevoGastoPage]
 })
-export class ListaDeudasPageModule {}
+export class NuevoGastoPageModule {}

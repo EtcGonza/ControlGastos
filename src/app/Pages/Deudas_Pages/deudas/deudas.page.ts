@@ -1,16 +1,14 @@
-import { Component, OnInit, OnDestroy, ApplicationRef } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { DeudaService } from 'src/app/Services/deuda.service';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { Deuda } from 'src/app/Models/deudaInterface';
-
+import { DeudaService } from 'src/app/Services/deuda.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-presentacion-deudas',
-  templateUrl: './presentacion-deudas.component.html',
-  styleUrls: ['./presentacion-deudas.component.scss'],
+  selector: 'app-deudas',
+  templateUrl: './deudas.page.html',
+  styleUrls: ['./deudas.page.scss'],
 })
-
-export class PresentacionDeudasComponent implements OnInit {
+export class DeudasPage implements OnInit {
 
   listaPagar: Deuda [] = [];
   listaCobrar: Deuda [] = [];
