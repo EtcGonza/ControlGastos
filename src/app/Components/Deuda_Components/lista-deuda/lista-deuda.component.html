@@ -1,13 +1,13 @@
 <ion-list class="ion-list">
 
     <ion-list-header class="ion-list-header">
-        <ion-label color="orange">
+        <ion-label color="light">
             {{titulo}}
         </ion-label>
     </ion-list-header>
 
     <div *ngFor="let deuda of Deudas">
-        <app-card-deuda [deuda]="deuda" [botones]="mostrarBotones"></app-card-deuda>
+        <app-card-deuda [deuda]="deuda"></app-card-deuda>
     </div>
 
 </ion-list>

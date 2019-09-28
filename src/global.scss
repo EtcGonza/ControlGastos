@@ -28,28 +28,40 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-// 
+//  Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap');
+//
 html {
     font-size: 62.5%;
 }
 
-.icono-fab {
-    width: 3rem;
-    height: 3rem;
-}
-
-.ion-list {
-    background-color: var(--ion-color-aqua);
-}
-
-.ion-list-header {
-    padding: 2rem;
-    margin-top: 2rem;
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 600;
+// Utilidades Globales 
+.texto-bold {
+    font-weight: bold;
 }
 
 .centrar-texto {
     text-align: center;
+}
+
+.bordes-redondos {
+    border-radius: 1.8rem;
+}
+
+.sombras {
+    box-shadow: 1px 29px 35px -13px rgba(0, 0, 0, 0.57);
+}
+
+.fondo1 {
+    --background: url(../src/assets/Fondos/Fondo_1.png) 0 0/100% 100% no-repeat;
+}
+
+.fondo2 {
+    --background: url(../src/assets/Fondos/Fondo_2.png) 0 0/100% 100% no-repeat;
+}
+
+///////////////////////////////
+.icono-fab {
+    width: 3rem;
+    height: 3rem;
 }

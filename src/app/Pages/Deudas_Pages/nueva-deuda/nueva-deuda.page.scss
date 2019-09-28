@@ -1,37 +1,5 @@
-.item-has-focus {
-    --highlight-color-focused: none !important;
-    --highlight-color-invalid: none !important;
-    --highlight-color-valid: none !important;
-    color: none !important;
-}
-
-.ion-invalid {
-    --highlight-color-focused: none !important;
-    --highlight-color-invalid: none !important;
-    --highlight-color-valid: none !important;
-    color: none !important;
-}
-
-.item-label-floating {
-    --highlight-color-focused: none !important;
-    --highlight-color-invalid: none !important;
-    --highlight-color-valid: none !important;
-    color: none !important;
-}
-
-.contenedor-boton {
-    display: flex;
-    justify-content: center;
-}
-
-.titulo-header {
-    font-size: 1.8rem;
-}
-
-.icono {
-    width: 3.8rem;
-    height: 3.8rem;
-    margin-left: 1rem;
+ion-card {
+    background-color: white;
 }
 
 .header-deuda {
@@ -39,11 +7,35 @@
     font-weight: bold;
 }
 
-ion-list {
-    background-color: var(--ion-color-orange);
+.item-has-focus {
+    --highlight-color-focused: var(--ion-color-rosa) !important;
+    --highlight-color-invalid: var(--ion-color-rojo) !important;
+    --highlight-color-valid: var(--ion-color-rosa) !important;
 }
 
-.imagen-header {
-    width: 10rem;
-    height: 10rem;
+.ion-invalid {
+    --highlight-color-focused: var(--ion-color-rosa) !important;
+    --highlight-color-invalid: var(--ion-color-rojo) !important;
+    --highlight-color-valid: var(--ion-color-rosa) !important;
+}
+
+.item-label-floating {
+    --highlight-color-focused: var(--ion-color-rosa) !important;
+    --highlight-color-invalid: var(--ion-color-rojo) !important;
+    --highlight-color-valid: var(--ion-color-rosa) !important;
+}
+
+.texto-segment {
+    font-size: 2rem;
+}
+
+.contenedor-boton {
+    display: flex;
+    justify-content: center;
+}
+
+.icono-boton {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-left: 1rem;
 }

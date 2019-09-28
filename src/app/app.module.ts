@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ComponentsModule } from './Components/components.module';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -17,7 +18,7 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule,
-            FormsModule, ComponentsModule, HttpClientModule],
+            FormsModule, ComponentsModule, HttpClientModule, IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,

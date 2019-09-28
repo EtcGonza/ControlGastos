@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 
 // Componentes
 import { CommonModule } from '@angular/common';
-import { CardComponent } from './Home_Components/card/card.component';
 import { PresentacionCardsComponent } from './Home_Components/presentacion-cards/presentacion-cards.component';
 import { HeaderComponent } from './Generales/header/header.component';
 import { MenuComponent } from './Generales/menu/menu.component';
@@ -17,11 +16,15 @@ import { IconsSlidesComponent } from './Gastos_Components/icons-slides/icons-sli
 
 // Pipes
 import { PipesModule } from 'src/app/Pipes/pipes.module';
+import { TuBilleteraComponent } from './Home_Components/tu-billetera/tu-billetera.component';
+import { CardGastadoComponent } from './Home_Components/card-gastado/card-gastado.component';
+import { CardSueldoComponent } from './Home_Components/card-sueldo/card-sueldo.component';
+import { ActividadesComponent } from './Home_Components/actividades/actividades.component';
+import { AvatarComponent } from './Deuda_Components/avatar/avatar.component';
 
 
 @NgModule({
   declarations: [
-    CardComponent,
     PresentacionCardsComponent,
     HeaderComponent,
     MenuComponent,
@@ -29,13 +32,21 @@ import { PipesModule } from 'src/app/Pipes/pipes.module';
     CardDeudaComponent,
     ModalIconGastosPage,
     IconsSlidesComponent,
+    TuBilleteraComponent,
+    CardGastadoComponent,
+    CardSueldoComponent,
+    ActividadesComponent,
+    AvatarComponent,
+
   ],
   exports: [
     HeaderComponent,
     MenuComponent,
     PresentacionCardsComponent,
     IconsSlidesComponent,
-    ListaDeudaComponent
+    ListaDeudaComponent,
+    ActividadesComponent,
+    CardDeudaComponent,
   ],
   imports: [
     CommonModule,
@@ -45,7 +56,7 @@ import { PipesModule } from 'src/app/Pipes/pipes.module';
     PipesModule,
     ReactiveFormsModule,
   ],
-  entryComponents:[
+  entryComponents: [
     ModalIconGastosPage
   ]
 })

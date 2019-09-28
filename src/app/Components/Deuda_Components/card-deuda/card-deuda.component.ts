@@ -10,14 +10,12 @@ import { Deuda } from 'src/app/Models/deudaInterface';
 export class CardDeudaComponent implements OnInit {
 
   @Input()deuda: Deuda;
-  @Input()botones: boolean;
-
-  mostrarbotones = true;
+  // mostrarbotones = true;
 
   constructor(private deudaService: DeudaService) {}
 
   ngOnInit() {
-    this.mostrarbotones = this.botones;
+    // this.mostrarbotones = this.botones;
   }
 
   borrarDeuda() {

@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { Deuda } from '../Models/deudaInterface';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class DeudaService {
   pagarListener = new EventEmitter <Deuda []> ();
   cobrarListener = new EventEmitter <Deuda []> ();
 
-  constructor() {}
+  constructor(private storage: StorageService) {}
 
   crearDeuda(tipo: string , nombre: string, monto: number, sexo: string) {
 
@@ -29,14 +30,18 @@ export class DeudaService {
       this.porPagar.unshift(insertarDeuda);
       this.pagarListener.emit(this.porPagar);
 
-      // console.log('Se inserto en porPagar', this.porPagar);
+      console.log('Se inserto en porPagar', this.porPagar);
+
+      // this.storage.guardarDeudas(this.porCobrar, 'pagar');
 
     } else if (tipo === 'cobrar') {
       insertarDeuda.Tipo = 'Cobrar';
       this.porCobrar.unshift(insertarDeuda);
       this.cobrarListener.emit(this.porCobrar);
 
-      // console.log('Se inserto en porCobrar', this.porCobrar);
+      console.log('Se inserto en porCobrar', this.porCobrar);
+
+      // this.storage.guardarDeudas(this.porCobrar, 'cobrar');
 
     } else {
       console.log('El tipo no es valido');
@@ -54,10 +59,18 @@ export class DeudaService {
 
       return `/assets/personas-icons/mujeres/mujer_${randomNumber}.svg`;
 
+   } else if (sexo === 'otro') {
+
+    if (randomNumber/2 === 0) {
+      return `/assets/personas-icons/mujeres/mujer_${randomNumber}.svg`;
+    } else {
+      return `/assets/personas-icons/hombre/hombre_${randomNumber}.svg`;
+    }
+
    } else {
 
-      return `/assets/personas-icons/noImage.svg`;
-     }
+    return `/assets/personas-icons/noImage.svg`;
+   }
   }
 
   eliminarDeuda(id: any, tipo: string) {

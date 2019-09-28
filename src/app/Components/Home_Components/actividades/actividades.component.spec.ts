@@ -1,0 +1,27 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ActividadesComponent } from './actividades.component';
+
+describe('ActividadesComponent', () => {
+  let component: ActividadesComponent;
+  let fixture: ComponentFixture<ActividadesComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ ActividadesComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ActividadesComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

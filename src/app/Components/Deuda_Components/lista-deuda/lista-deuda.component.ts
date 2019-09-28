@@ -12,10 +12,12 @@ export class ListaDeudaComponent implements OnInit {
 
   @Input() titulo: string;
   @Input() Deudas: Observable <Deuda> [];
-  @Input() mostrarBotones: boolean;
+  // @Input() mostrarBotones: boolean;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // console.log(this.Deudas);
+  }
 
 }

@@ -1,7 +1,60 @@
-<app-header [titulo]="'Deudas'"></app-header>
+<ion-content class="fondo1">
 
-<ion-content color="aqua">
-    <ion-segment color="orange" (ionChange)="mostrar($event)">
+    <app-header [titulo]="'Deudas'"></app-header>
+
+    <!-- FILTROS -->
+    <div class="contenedor-filtros">
+
+        <ion-item class="filtros">
+            <ion-label color="light">Tipo</ion-label>
+            <ion-select placeholder="Cobrar">
+                <ion-select-option value="cobrar">Cobrar</ion-select-option>
+                <ion-select-option value="pagar">Pagar</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item class="filtros">
+            <ion-label color="light">Completadas</ion-label>
+            <ion-select placeholder="No">
+                <ion-select-option value="cobrar">No</ion-select-option>
+                <ion-select-option value="pagar">Si</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+    </div>
+    <!-- FIN FILTROS -->
+
+    <!-- NO EXISTEN DEUDAS -->
+    <!-- <ion-item *ngIf="!existenCobra && !existenPagar" color="aqua">
+        <ion-label class="no-existen ion-text-center ion-margin-top" color="orange">
+            No existen deudas
+        </ion-label>
+    </ion-item> -->
+    <!--FIN NO EXISTEN DEUDAS -->
+
+
+
+    <div>
+        <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.listaCobrar"></app-lista-deuda>
+    </div>
+
+    <!-- <div *ngIf="this.existenCobra">
+                <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.listaCobrar" [mostrarBotones]="true"></app-lista-deuda>
+            </div> -->
+
+
+
+    <!-- BOTON FAB -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="rosaSangre" (click)="navCrearDeuda()">
+            <ion-icon name="add" color="light"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <!-- FIN BOTON FAB -->
+
+</ion-content>
+
+<!-- <ion-segment color="orange" (ionChange)="mostrar($event)">
         <ion-segment-button value="incompletas" checked>
             <ion-label>Incompletas</ion-label>
         </ion-segment-button>
@@ -40,15 +93,4 @@
         <div *ngIf="this.existenCobra">
             <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.completadasCobrar" [mostrarBotones]="false"></app-lista-deuda>
         </div>
-    </div>
-
-
-
-
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button color="redOrange" (click)="navCrearDeuda()">
-            <ion-icon name="add" color="pearl"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-
-</ion-content>
+    </div> -->

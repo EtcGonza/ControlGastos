@@ -1,17 +1,21 @@
 <ion-grid fixed>
-    <ion-row>
 
-        <ion-col size="12">
-            <app-card [valor]="10000" [titulo]="'Sueldo'" [pathIcon]="'/assets/icons/piggy-bank.svg'"></app-card>
-        </ion-col>
+    <div class="contenedor-cards">
+        <ion-row class="padre">
+            <ion-col size="9">
+                <app-tu-billetera></app-tu-billetera>
+            </ion-col>
+        </ion-row>
 
-        <ion-col size="12">
-            <app-card [valor]="2000" [titulo]="'Gastado'" [pathIcon]="'/assets/icons/money.svg'"></app-card>
-        </ion-col>
+        <ion-row class="padre">
+            <ion-col size="6">
+                <app-card-gastado></app-card-gastado>
+            </ion-col>
 
-        <ion-col size="12">
-            <app-card [valor]="8000" [titulo]="'Diferencia'" [pathIcon]="'/assets/icons/scale.svg'"></app-card>
-        </ion-col>
+            <ion-col size="6">
+                <app-card-sueldo></app-card-sueldo>
+            </ion-col>
+        </ion-row>
+    </div>
 
-    </ion-row>
 </ion-grid>

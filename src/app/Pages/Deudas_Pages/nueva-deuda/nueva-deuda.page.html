@@ -1,16 +1,25 @@
-<ion-content color="aqua">
+<ion-content class="fondo1">
+
     <form [formGroup]="formularioDeuda" (ngSubmit)="crearDeuda()" class="ion-padding">
 
-        <ion-card color="orange">
+        <ion-card class="bordes-redondos sombras">
 
             <ion-card-header>
+
                 <ion-card-title>
-                    <ion-text color="aqua">
-                        <div class="ion-text-center header-deuda">
-                            Nueva Deuda
-                        </div>
-                    </ion-text>
-                    <!-- <img class="imagen-header" src="/assets/icons/debt.svg"> -->
+
+                    <ion-header no-border class="ion-no-padding">
+                        <ion-toolbar>
+                            <ion-buttons slot="start">
+                                <ion-back-button color="rosa" defaultHref="deudas"></ion-back-button>
+                            </ion-buttons>
+                            <ion-text color="rosa">
+                                <div class="ion-text-left header-deuda">
+                                    Nueva Deuda
+                                </div>
+                            </ion-text>
+                        </ion-toolbar>
+                    </ion-header>
 
                 </ion-card-title>
             </ion-card-header>
@@ -18,35 +27,48 @@
             <ion-card-content>
 
                 <!-- Input Nombre -->
-                <ion-item class="ion-margin-top" color="orange">
-                    <ion-label color="aqua" position="floating">Nombre</ion-label>
-                    <ion-input color="aqua" debounce="700" type="text" minlength="2" maxlength="20" formControlName="nombre" required></ion-input>
+                <ion-item class="ion-margin-top">
+                    <ion-label color="black" position="fixed">
+                        <ion-text color="black">
+                            Nombre
+                        </ion-text>
+                    </ion-label>
+                    <ion-input color="rosa" debounce="700" type="text" minlength="2" maxlength="20" formControlName="nombre" required></ion-input>
                 </ion-item>
 
                 <!-- Input Monto -->
 
-                <ion-item class="ion-margin-top" color="orange">
-                    <ion-label color="aqua" position="floating">Monto($)</ion-label>
-                    <ion-input color="aqua" debounce="700" type="number" minlength="2" maxlength="20" formControlName="monto" required></ion-input>
+                <ion-item class="ion-margin-top">
+                    <ion-label color="black" position="fixed">
+                        <ion-text color="black">
+                            Monto($)
+                        </ion-text>
+                    </ion-label>
+                    <ion-input color="rosa" debounce="700" type="number" minlength="2" maxlength="20" formControlName="monto" required></ion-input>
                 </ion-item>
 
 
                 <!-- Inputs Sexo -->
 
-                <ion-list class="ion-list">
+                <ion-list>
                     <ion-radio-group formControlName="sexo">
                         <ion-list-header>
-                            <ion-label class="titulo-header" color="aqua">Sexo</ion-label>
+                            <ion-label class="titulo-header">Sexo</ion-label>
                         </ion-list-header>
 
-                        <ion-item color="orange">
-                            <ion-label color="aqua">Hombre</ion-label>
-                            <ion-radio color="aqua" slot="start" value="hombre"></ion-radio>
+                        <ion-item>
+                            <ion-label>Hombre</ion-label>
+                            <ion-radio color="rosa" slot="start" value="hombre"></ion-radio>
                         </ion-item>
 
-                        <ion-item color="orange">
-                            <ion-label color="aqua">Mujer</ion-label>
-                            <ion-radio color="aqua" slot="start" value="mujer"></ion-radio>
+                        <ion-item>
+                            <ion-label>Mujer</ion-label>
+                            <ion-radio color="rosa" slot="start" value="mujer"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Otro</ion-label>
+                            <ion-radio color="rosa" slot="start" value="otro"></ion-radio>
                         </ion-item>
 
                     </ion-radio-group>
@@ -54,22 +76,22 @@
 
                 <!-- Input Tipo de Deuda -->
 
-                <ion-segment color="aqua" class="ion-margin-top" formControlName="tipo">
+                <ion-segment color="rosa" class="ion-margin-top" formControlName="tipo">
                     <ion-segment-button value="pagar">
-                        <ion-label color="aqua">Pagar</ion-label>
+                        <ion-label class="texto-segment" color="rosa">Pagar</ion-label>
                     </ion-segment-button>
                     <ion-segment-button value="cobrar">
-                        <ion-label color="aqua">Cobrar</ion-label>
+                        <ion-label class="texto-segment" color="rosa">Cobrar</ion-label>
                     </ion-segment-button>
                 </ion-segment>
 
                 <!-- Boton para crear Deuda -->
                 <div class="contenedor-boton ion-margin-top">
-                    <ion-button type="submit" size="large" color="aqua" [disabled]="formularioDeuda.invalid" (click)="goBack()">
-                        <ion-text color="orange">
+                    <ion-button type="submit" size="large" color="rosa" [disabled]="formularioDeuda.invalid" (click)="goBack()">
+                        <ion-text color="light">
                             Crear Deuda
                         </ion-text>
-                        <img class="icono" src="/assets/icons/checked.svg">
+                        <img class="icono-boton" src="/assets/icons/checked.svg">
                     </ion-button>
                 </div>
 
@@ -78,4 +100,5 @@
         </ion-card>
 
     </form>
+
 </ion-content>

@@ -1,59 +1,74 @@
-<app-header [titulo]="'Nueva Gasto'"></app-header>
+<ion-content class="fondo2">
 
-<ion-content color="aqua">
+    <form [formGroup]="formularioGasto" (ngSubmit)="crearGasto()" class="ion-padding">
 
+        <ion-card class="bordes-redondos sombras">
 
-    <form [formGroup]="formularioGasto" (ngSubmit)="crearGasto()" padding>
-
-        <ion-card color="orange">
+            <ion-card-header>
+                <ion-card-title>
+                    <ion-text color="rosa">
+                        <div class="ion-text-center header-deuda">
+                            Nuevo Gasto
+                        </div>
+                    </ion-text>
+                </ion-card-title>
+            </ion-card-header>
 
             <ion-card-content>
 
-                <!-- Icono que eligio la persona -->
-                <div class="contenedor-icono ion-padding" *ngIf="icono.existe">
-                    <img class="icono-selecionado" [src]="icono.path">
-                </div>
-
                 <!-- Input Nombre -->
 
-                <ion-item class="ion-margin-top" color="orange">
-                    <ion-label color="aqua" position="floating">Descripcion</ion-label>
-                    <ion-input color="aqua" debounce="700" type="text" minlength="2" maxlength="30" formControlName="descripcion" required></ion-input>
+                <ion-item class="ion-margin-top">
+                    <ion-label position="fixed">
+                        <ion-text color="black">
+                            Descripcion
+                        </ion-text>
+                    </ion-label>
+                    <ion-input color="rosa" debounce="700" type="text" minlength="2" maxlength="30" formControlName="descripcion" required></ion-input>
                 </ion-item>
 
                 <!-- Input Monto -->
 
-                <ion-item class="ion-margin-top" color="orange">
-                    <ion-label color="aqua" position="floating">Monto($)</ion-label>
-                    <ion-input color="aqua" debounce="700" type="number" minlength="2" maxlength="10" formControlName="monto" required></ion-input>
+                <ion-item class="ion-margin-top">
+                    <ion-label position="fixed">
+                        <ion-text>
+                            Monto($)
+                        </ion-text>
+                    </ion-label>
+                    <ion-input color="rosa" debounce="700" type="number" minlength="2" maxlength="10" formControlName="monto" required></ion-input>
                 </ion-item>
 
                 <!-- Input Tipo de Gasto -->
 
-                <ion-segment color="aqua" class="ion-margin-top" formControlName="tipo">
+                <ion-segment color="rosa" class="ion-margin-top" formControlName="tipo">
                     <ion-segment-button value="Pasivo">
-                        <ion-label>Pasivo</ion-label>
+                        <ion-label class="texto-segment" color="rosa">Pasivo</ion-label>
                     </ion-segment-button>
                     <ion-segment-button value="Activo">
-                        <ion-label>Activo</ion-label>
+                        <ion-label class="texto-segment" color="rosa">Activo</ion-label>
                     </ion-segment-button>
                 </ion-segment>
 
 
                 <!-- Seleccionar Icono -->
                 <div class="contenedor-boton ion-margin-top">
-                    <ion-button expand="block" size="outline" fill="clear" color="aqua" (click)="abrirModalIcons()">
+                    <ion-button expand="block" size="outline" fill="clear" color="rosa" (click)="abrirModalIcons()">
                         Elegir Icono
                     </ion-button>
                 </div>
 
+                <!-- Icono que eligio la persona -->
+                <div class="contenedor-icono ion-padding" *ngIf="icono.existe">
+                    <img class="icono-selecionado" [src]="icono.path">
+                </div>
+
                 <!-- Boton para crear Gasto -->
                 <div class="contenedor-boton ion-margin-top">
-                    <ion-button type="submit" size="large" color="aqua" [disabled]="formularioGasto.invalid" (click)="goBack()">
-                        <ion-text color="pearl">
+                    <ion-button type="submit" size="large" color="rosa" [disabled]="formularioGasto.invalid" (click)="goBack()">
+                        <ion-text color="light">
                             Crear Gasto
                         </ion-text>
-                        <img class="icono" src="/assets/icons/checked.svg">
+                        <img class="icono-boton" src="/assets/icons/checked.svg">
                     </ion-button>
                 </div>
 
