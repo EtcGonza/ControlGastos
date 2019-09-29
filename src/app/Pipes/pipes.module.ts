@@ -12,7 +12,8 @@ import { DeudasTipoPipe } from './deudas-tipo.pipe';
   ],
   exports: [
     IconsCategoriaPipe,
-    MomentPipePipe
+    MomentPipePipe,
+    DeudasTipoPipe
   ],
   imports: [
     CommonModule

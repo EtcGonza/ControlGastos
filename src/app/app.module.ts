@@ -13,6 +13,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 // Componentes
 import { AppComponent } from './app.component';
+import { DeudasTipoPipe } from './Pipes/deudas-tipo.pipe';
 
 @NgModule({
   declarations: [AppComponent],

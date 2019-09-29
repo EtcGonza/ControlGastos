@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DeudaService } from 'src/app/Services/deuda.service';
 import { Deuda } from 'src/app/Models/deudaInterface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-card-deuda',
@@ -9,7 +10,7 @@ import { Deuda } from 'src/app/Models/deudaInterface';
 })
 export class CardDeudaComponent implements OnInit {
 
-  @Input()deuda: Deuda;
+  @Input()deuda: Observable <Deuda>;
   // mostrarbotones = true;
 
   constructor(private deudaService: DeudaService) {}
@@ -19,11 +20,11 @@ export class CardDeudaComponent implements OnInit {
   }
 
   borrarDeuda() {
-    this.deudaService.eliminarDeuda(this.deuda.id, this.deuda.Tipo);
+    this.deudaService.eliminarDeuda(this.deuda);
   }
 
   completarDeuda() {
-    this.deudaService.completarDeuda(this.deuda);
+    // this.deudaService.completarDeuda(this.deuda);
   }
 
 }

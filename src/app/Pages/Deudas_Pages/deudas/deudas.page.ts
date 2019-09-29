@@ -10,36 +10,42 @@ import { NavController } from '@ionic/angular';
 })
 export class DeudasPage implements OnInit {
 
-  listaPagar: Deuda [] = [];
-  listaCobrar: Deuda [] = [];
-
-  completadasPagar: Deuda [] = [];
-  completadasCobrar: Deuda [] = [];
-
-  existenPagar: boolean;
-  existenCobra: boolean;
+  existePagar = false;
+  existeCobrar = false;
   mostrarCompletadas = false;
+
+  misDeudas: Deuda[] = [];
+  deudasPagar: Deuda[] = [];
+  deudasCobrar: Deuda[] = [];
 
   constructor(private deudaService: DeudaService,
               private navController: NavController,
               private aplicationRef: ApplicationRef) {}
 
-   ngOnInit() {
-
-    this.deudaService.pagarListener.subscribe( (porPagar: Deuda []) => {
-      this.listaPagar = porPagar;
-      this.existenPagar = this.pagarLength();
+  ngOnInit() {
+    this.deudaService.deudasListener.subscribe((deudas: Deuda[]) => {
+      this.misDeudas = deudas;
+      this.filtrarDeudas();
       this.aplicationRef.tick();
+
+      this.existenCobrar();
+      this.existenPagar();
     });
 
-    this.deudaService.cobrarListener.subscribe( (porCobrar: Deuda []) => {
-      this.listaCobrar = porCobrar;
-      this.existenCobra = this.cobrarLength();
-      this.aplicationRef.tick();
-    });
+    // this.deudaService.pagarListener.subscribe( (porPagar: Deuda []) => {
+    //   this.listaPagar = porPagar;
+    //   this.existenPagar = this.pagarLength();
+    //   this.aplicationRef.tick();
+    // });
 
-    this.completadasCobrar = this.deudaService.completadasCobrar;
-    this.completadasPagar = this.deudaService.completadasPagar;
+    // this.deudaService.cobrarListener.subscribe( (porCobrar: Deuda []) => {
+    //   this.listaCobrar = porCobrar;
+    //   this.existenCobra = this.cobrarLength();
+    //   this.aplicationRef.tick();
+    // });
+
+    // this.completadasCobrar = this.deudaService.completadasCobrar;
+    // this.completadasPagar = this.deudaService.completadasPagar;
 
   }
 
@@ -51,24 +57,40 @@ export class DeudasPage implements OnInit {
     }
   }
 
-  pagarLength() {
-    if (this.listaPagar.length > 0) {
-      return true;
+  existenPagar() {
+    if (this.deudasPagar.length > 0) {
+      this.existePagar = true;
     } else {
-      return false;
+      this.existePagar = false;
     }
   }
 
-  cobrarLength() {
-    if (this.listaCobrar.length > 0) {
-      return true;
+  existenCobrar() {
+    if (this.deudasCobrar.length > 0) {
+      this.existeCobrar = true;
     } else {
-      return false;
+      this.existeCobrar = false;
     }
+  }
+
+  // buscarDeuda(tipo: string) {
+  //   let existeTipo;
+  //   return existeTipo = this.misDeudas.find((deuda) => {
+  //     if (deuda.Tipo === tipo) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
+  // }
+
+  filtrarDeudas() {
+   this.deudasPagar = this.misDeudas.filter(deuda => deuda.Tipo === 'Pagar');
+   this.deudasCobrar = this.misDeudas.filter(deuda => deuda.Tipo === 'Cobrar');
   }
 
   navCrearDeuda() {
-    this.navController.navigateForward('/nueva-deuda');
+    this.navController.navigateRoot('/nueva-deuda');
   }
 
 }

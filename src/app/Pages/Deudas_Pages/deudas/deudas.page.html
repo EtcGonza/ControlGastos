@@ -24,6 +24,7 @@
     </div>
     <!-- FIN FILTROS -->
 
+
     <!-- NO EXISTEN DEUDAS -->
     <!-- <ion-item *ngIf="!existenCobra && !existenPagar" color="aqua">
         <ion-label class="no-existen ion-text-center ion-margin-top" color="orange">
@@ -32,17 +33,46 @@
     </ion-item> -->
     <!--FIN NO EXISTEN DEUDAS -->
 
+    <ion-list *ngIf="this.existeCobrar">
+
+        <ion-list-header class="ion-list-header">
+            <ion-label color="light">
+                Cobrar
+            </ion-label>
+        </ion-list-header>
+
+        <div *ngFor="let deuda of this.deudasCobrar">
+            <app-card-deuda [deuda]="deuda"></app-card-deuda>
+        </div>
+
+    </ion-list>
+
+    <ion-list *ngIf="this.existePagar">
+
+        <ion-list-header class="ion-list-header">
+            <ion-label color="light">
+                Pagar
+            </ion-label>
+        </ion-list-header>
+
+        <div *ngFor="let deuda of this.deudasPagar">
+            <app-card-deuda [deuda]="deuda"></app-card-deuda>
+        </div>
+
+    </ion-list>
 
 
-    <div>
-        <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.listaCobrar"></app-lista-deuda>
-    </div>
+
+
+
+
+    <!-- <div>
+        <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.misDeudas"></app-lista-deuda>
+    </div> -->
 
     <!-- <div *ngIf="this.existenCobra">
                 <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.listaCobrar" [mostrarBotones]="true"></app-lista-deuda>
             </div> -->
-
-
 
     <!-- BOTON FAB -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">

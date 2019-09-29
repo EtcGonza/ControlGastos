@@ -10,13 +10,8 @@ import { StorageService } from './storage.service';
 })
 export class DeudaService {
 
-  porPagar: Deuda [] = [];
-  porCobrar: Deuda [] = [];
-  completadasPagar: Deuda [] = [];
-  completadasCobrar: Deuda [] = [];
-
-  pagarListener = new EventEmitter <Deuda []> ();
-  cobrarListener = new EventEmitter <Deuda []> ();
+  deudas: Deuda [] = [];
+  deudasListener = new EventEmitter <Deuda []> ();
 
   constructor(private storage: StorageService) {}
 
@@ -27,19 +22,19 @@ export class DeudaService {
 
     if (tipo === 'pagar') {
       insertarDeuda.Tipo = 'Pagar';
-      this.porPagar.unshift(insertarDeuda);
-      this.pagarListener.emit(this.porPagar);
+      this.deudas.unshift(insertarDeuda);
+      this.deudasListener.emit(this.deudas);
 
-      console.log('Se inserto en porPagar', this.porPagar);
+      // console.log('Se inserto en porPagar', this.deudas);
 
       // this.storage.guardarDeudas(this.porCobrar, 'pagar');
 
     } else if (tipo === 'cobrar') {
       insertarDeuda.Tipo = 'Cobrar';
-      this.porCobrar.unshift(insertarDeuda);
-      this.cobrarListener.emit(this.porCobrar);
+      this.deudas.unshift(insertarDeuda);
+      this.deudasListener.emit(this.deudas);
 
-      console.log('Se inserto en porCobrar', this.porCobrar);
+      // console.log('Se inserto en porCobrar', this.deudas);
 
       // this.storage.guardarDeudas(this.porCobrar, 'cobrar');
 
@@ -61,7 +56,7 @@ export class DeudaService {
 
    } else if (sexo === 'otro') {
 
-    if (randomNumber/2 === 0) {
+    if (randomNumber / 2 === 0) {
       return `/assets/personas-icons/mujeres/mujer_${randomNumber}.svg`;
     } else {
       return `/assets/personas-icons/hombre/hombre_${randomNumber}.svg`;
@@ -73,51 +68,38 @@ export class DeudaService {
    }
   }
 
-  eliminarDeuda(id: any, tipo: string) {
-    let deuda: Deuda;
+  eliminarDeuda(deuda: Deuda) {
+
     let index: number;
 
-    if (tipo === 'Pagar') {
+    index = this.deudas.indexOf(deuda);
 
-        deuda = this.porPagar.find( deuda => deuda.id === id);
-        index = this.porPagar.indexOf(deuda);
+    console.log('Index es: ', index);
 
-        if (index !== -1) {
-        this.porPagar.splice(index, 1);
+    if (index !== -1) {
+        this.deudas.splice(index, 1);
+        this.deudasListener.emit(this.deudas);
+      } else {
+        console.log('Error al querer eliminar la deuda');
       }
 
-        return;
-    } else if (tipo === 'Cobrar') {
-
-        deuda = this.porCobrar.find( deuda => deuda.id === id);
-        index = this.porCobrar.indexOf(deuda);
-
-        if (index !== -1) {
-        this.porCobrar.splice(index, 1);
-      }
-
-        return;
-
-    } else {
-      console.log('Tipo ingresado no valido.');
-    }
   }
 
-  completarDeuda(deuda: Deuda) {
+  // completarDeuda(deuda: Deuda) {
 
-    deuda.Completada = true;
-    deuda.FechaCompletado = moment().locale('es').format('dddd, D MMMM');
+  //   deuda.Completada = true;
+  //   deuda.FechaCompletado = moment().locale('es').format('dddd, D MMMM');
 
-    if (deuda.Tipo === 'Pagar') {
-      this.completadasPagar.unshift(deuda);
-      this.eliminarDeuda(deuda.id, deuda.Tipo);
+  //   if (deuda.Tipo === 'Pagar') {
+  //     this.completadasPagar.unshift(deuda);
+  //     this.eliminarDeuda(deuda.id, deuda.Tipo);
 
-    } else if (deuda.Tipo === 'Cobrar') {
-      this.completadasCobrar.unshift(deuda);
-      this.eliminarDeuda(deuda.id, deuda.Tipo);
-    }
+  //   } else if (deuda.Tipo === 'Cobrar') {
+  //     this.completadasCobrar.unshift(deuda);
+  //     this.eliminarDeuda(deuda.id, deuda.Tipo);
+  //   }
 
-  }
+  // }
 
   setDeuda(nombre: string, monto: number, sexo: string) {
 
@@ -132,6 +114,10 @@ export class DeudaService {
       AvatarPath: this.asignarAvatar(sexo),
     };
     return setearDeuda;
+  }
+
+  getDeudas() {
+    return this.deudas;
   }
 }
 

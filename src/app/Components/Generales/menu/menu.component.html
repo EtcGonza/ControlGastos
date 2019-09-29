@@ -1,15 +1,21 @@
 <ion-menu side="start" menuId="menuPrincipal" contentId="principal">
-    <app-header [titulo]="'Menu'"></app-header>
-    <ion-content color="aqua">
 
-        <ion-list color="aqua" class="ion-list">
+    <ion-toolbar color="turquesa">
+        <ion-title class="titulo-menu ion-text-center" color="rosa">
+            Menu
+        </ion-title>
+    </ion-toolbar>
+
+    <ion-content color="turquesa">
+
+        <ion-list color="light" class="ion-list">
             <ion-menu-toggle>
 
                 <ion-item color="aqua" detail routerLink="/">
                     <img class="iconos" src="/assets/icons/house.svg">
 
                     <ion-label>
-                        <ion-text color="pearl"> Home</ion-text>
+                        <ion-text color="light"> Home</ion-text>
                     </ion-label>
 
                 </ion-item>
@@ -18,7 +24,7 @@
                     <img class="iconos" src="/assets/icons/money.svg">
 
                     <ion-label>
-                        <ion-text color="pearl"> Gastos</ion-text>
+                        <ion-text color="light"> Gastos</ion-text>
                     </ion-label>
 
                 </ion-item>
@@ -27,7 +33,7 @@
                     <img class="iconos" src="/assets/icons/contract.svg">
 
                     <ion-label>
-                        <ion-text color="pearl"> Deudas</ion-text>
+                        <ion-text color="light"> Deudas</ion-text>
                     </ion-label>
 
                 </ion-item>
@@ -36,7 +42,7 @@
                     <img class="iconos" src="/assets/icons/credit-card.svg">
 
                     <ion-label>
-                        <ion-text color="pearl"> Tarjetas</ion-text>
+                        <ion-text color="light"> Tarjetas</ion-text>
                     </ion-label>
 
                 </ion-item>
