@@ -74,7 +74,7 @@
 
                 <!-- Boton para crear Gasto -->
                 <div class="contenedor-boton ion-margin-top">
-                    <ion-button type="submit" size="large" color="rosa" [disabled]="formularioGasto.invalid" (click)="goBack()">
+                    <ion-button type="submit" size="large" color="rosa" [disabled]="formularioGasto.invalid || icono.existe === false" (click)="goBack()">
                         <ion-text color="light">
                             Crear Gasto
                         </ion-text>

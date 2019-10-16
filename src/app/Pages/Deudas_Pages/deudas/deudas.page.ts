@@ -1,4 +1,4 @@
-import { Component, OnInit, ApplicationRef } from '@angular/core';
+import { Component, OnInit, OnDestroy ,ApplicationRef } from '@angular/core';
 import { Deuda } from 'src/app/Models/deudaInterface';
 import { DeudaService } from 'src/app/Services/deuda.service';
 import { NavController } from '@ionic/angular';
@@ -8,7 +8,7 @@ import { NavController } from '@ionic/angular';
   templateUrl: './deudas.page.html',
   styleUrls: ['./deudas.page.scss'],
 })
-export class DeudasPage implements OnInit {
+export class DeudasPage implements OnInit, OnDestroy {
 
   filtroCompletas = false;
   filtroPagar = true;
@@ -28,20 +28,20 @@ export class DeudasPage implements OnInit {
   cobrarCompletadas: Deuda[] = [];
 
   constructor(private deudaService: DeudaService,
-              private navController: NavController,
-              private aplicationRef: ApplicationRef) {}
+              private navController: NavController) {}
 
   ngOnInit() {
-    this.deudaService.deudasListener.subscribe((deudas: Deuda[]) => {
-      this.misDeudas = deudas;
-      this.filtrarDeudas();
-      this.existenCobrar();
-      this.existenPagar();
-      this.existenCobrarCompletas();
-      this.existenPagarCompletas();
+    this.obtenerCambios();
+    console.log('Mis deudas (COMPONENT): ', this.misDeudas);
+    console.log('Mis Deudas (SERVICE)', this.deudaService.deudas);
+  }
 
-      this.aplicationRef.tick();
-    });
+  ionViewWillEnter() {
+    this.deudaService.getDeudas();
+  }
+
+  ngOnDestroy() {
+    console.log('Destruido');
   }
 
   existenPagar() {
@@ -108,7 +108,21 @@ export class DeudasPage implements OnInit {
   }
 
   navCrearDeuda() {
-    this.navController.navigateRoot('/nueva-deuda');
+    this.navController.navigateForward('/nueva-deuda');
   }
 
+  obtenerCambios() {
+    this.deudaService.deudasListener.subscribe((deudas: Deuda[]) => {
+      this.misDeudas = deudas;
+      this.filtrarDeudas();
+      this.existenCobrar();
+      this.existenPagar();
+      this.existenCobrarCompletas();
+      this.existenPagarCompletas();
+    });
+  }
+
+  obtenerDeudas(){
+    this.deudaService.getDeudas();
+  }
 }

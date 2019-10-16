@@ -2,8 +2,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 import { Deuda } from '../Models/deudaInterface';
 import * as moment from 'moment';
-import { StorageService } from './storage.service';
 import 'moment/locale/pt-br';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,26 @@ export class DeudaService {
   deudas: Deuda [] = [];
   deudasListener = new EventEmitter <Deuda []> ();
 
-  constructor(private storage: StorageService) {}
+  constructor(private storage: Storage) {
+    this.cargarDeudasStorage();
+  }
+
+  async cargarDeudasStorage() {
+    const misDeudas = await this.storage.get('misdeudas');
+
+    if (misDeudas) {
+      this.deudas = misDeudas;
+      console.log('Existen Deudas');
+    } else {
+      console.error('No hay deudas para cargar');
+      this.deudas = [];
+    }
+  }
+
+  guardarDeudasStorage() {
+    this.storage.set('misdeudas', this.deudas);
+    // console.log('Deudas Guardadas');
+  }
 
   crearDeuda(tipo: string , nombre: string, monto: number, sexo: string) {
 
@@ -24,7 +43,6 @@ export class DeudaService {
       insertarDeuda.Tipo = 'Pagar';
       this.deudas.unshift(insertarDeuda);
       this.deudasListener.emit(this.deudas);
-
       // console.log('Se inserto en porPagar', this.deudas);<
       // this.storage.guardarDeudas(this.porCobrar, 'pagar');
 
@@ -32,14 +50,15 @@ export class DeudaService {
       insertarDeuda.Tipo = 'Cobrar';
       this.deudas.unshift(insertarDeuda);
       this.deudasListener.emit(this.deudas);
-
       // console.log('Se inserto en porCobrar', this.deudas);
       // this.storage.guardarDeudas(this.porCobrar, 'cobrar');
 
     } else {
       console.log('El tipo no es valido');
+      return;
     }
 
+    this.guardarDeudasStorage();
   }
 
   asignarAvatar(sexo: string) {
@@ -73,6 +92,7 @@ export class DeudaService {
     if (index !== -1) {
         this.deudas.splice(index, 1);
         this.deudasListener.emit(this.deudas);
+        this.guardarDeudasStorage();
       } else {
         console.log('Error al querer eliminar la deuda');
       }
@@ -91,7 +111,7 @@ export class DeudaService {
       id: uuid(),
       Nombre: nombre,
       Monto: monto,
-      FechaCreada: moment().locale('es'),
+      FechaCreada: moment().locale('es').format('dddd, DD, MM'),
       Completada: false,
       FechaCompletado: false,
       AvatarPath: this.asignarAvatar(sexo),
@@ -100,7 +120,7 @@ export class DeudaService {
   }
 
   getDeudas() {
-    return this.deudas;
+    this.deudasListener.emit(this.deudas);
   }
 
   randomColorAvatar() {
@@ -109,5 +129,3 @@ export class DeudaService {
     return colores[randomNumber];
   }
 }
-
-// moment().locale('es').format('dddd, D MMMM'),

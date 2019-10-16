@@ -10,7 +10,8 @@ export class GastosService {
   misGastos: MisGastos [] = [];
   libMoment = moment().locale('es');
 
-  gastosListener = new EventEmitter <MisGastos []> ();
+
+  // gastosListener = new EventEmitter <MisGastos []> ();
   mesListener = new EventEmitter <GastoMes> ();
 
   constructor() {}
@@ -118,9 +119,12 @@ export class GastosService {
     } else {
       // Por algun motivo el gasto que se creo no es ni PASIVO ni ACTIVO. Por lo tanto surge un error.
       console.error('[ERROR] Tipo ingresado no Valido.');
+      return;
     }
 
-    // console.log('Mis Gastos Actualizado: ', this.misGastos);
+    // Guardar en Storage
+    console.log('Guarde en Storage');
+
   }
 
   setGasto(descripcion: string, monto: number, categoria: string, tipo: string, icono: string) {
@@ -130,6 +134,7 @@ export class GastosService {
       Monto: monto,
       Categoria: categoria,
       Tipo: tipo,
+      Eliminado: false,
       FechaCreacion: moment().locale('es').format('dddd, D MMMM'),
       IconoPath: this.asignarIcono(icono)
     };
@@ -234,5 +239,13 @@ export class GastosService {
 
   asignarIcono(icono: string) {
     return `/assets/icons/${icono}`;
+  }
+
+  eliminarGasto(gasto: Gasto) {
+    gasto.Eliminado = true;
+    // Guardar en Storage
+
+    console.log('Gasto eliminado');
+    this.mesListener.emit();
   }
 }

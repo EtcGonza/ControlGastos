@@ -9,15 +9,26 @@ export class StorageService {
 
   constructor(private storage: Storage) {}
 
-  guardarDeudas(deudas: Deuda [], tipo: string) {
+  guardarDeudasStorage(deudas: Deuda []) {
+    this.storage.set('misdeudas', deudas);
+    console.log('Se guardaron deudas en el storage');
+  }
 
-    // if (tipo === 'cobrar') {
-      this.storage.set('cobrar', deudas);
-      console.log('Cobrar Guardadas');
-    // } else if (tipo === 'pagar') {
-    //   this.storage.set('pagar', deudas);
-    //   console.log('Pagar Guardadas');
-    // }
+  async cargarDeudasStorage(deudas: Deuda []) {
+    const misDeudas = await this.storage.get('misdeudas');
+
+    if (misDeudas) {
+      deudas = misDeudas;
+    } else {
+      console.log('No existe en el storage Deudas para cargar');
+    }
+  }
+
+  guardarGastosStorage() {
+
+  }
+
+  cargarGastosStorage() {
 
   }
 

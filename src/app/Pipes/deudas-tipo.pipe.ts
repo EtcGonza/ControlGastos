@@ -13,30 +13,30 @@ export class DeudasTipoPipe implements PipeTransform {
   // tslint:disable-next-line: align
   async transform(tipoCobrar: boolean) {
 
-    console.log('Argumento pasado: ', tipoCobrar);
+    // console.log('Argumento pasado: ', tipoCobrar);
 
-    if (tipoCobrar === true) {
+    // if (tipoCobrar === true) {
 
-      return this.deudaService.getDeudas().map(
-        data => {
-          if (data.Tipo === 'Pagar') {
-            return data;
-          }
-        }
-      );
+    //   return this.deudaService.getDeudas().map(
+    //     data => {
+    //       if (data.Tipo === 'Pagar') {
+    //         return data;
+    //       }
+    //     }
+    //   );
 
-    } else if (tipoCobrar === false) {
+    // } else if (tipoCobrar === false) {
 
-      // console.log('Mostrando Cobrar');
+    //   // console.log('Mostrando Cobrar');
 
-      return this.deudaService.getDeudas().map(
-        data => {
-          if (data.Tipo === 'Cobrar') {
-            return data;
-          }
-        }
-      );
-    }
+    //   return this.deudaService.getDeudas().map(
+    //     data => {
+    //       if (data.Tipo === 'Cobrar') {
+    //         return data;
+    //       }
+    //     }
+    //   );
+    // }
 
 
 

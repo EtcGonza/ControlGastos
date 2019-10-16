@@ -5,7 +5,7 @@ export interface Deuda {
     id: string;
     Nombre: string;
     Monto: number;
-    FechaCreada: Moment;
+    FechaCreada: string;
     Completada: boolean;
     FechaCompletado: string | boolean;
     AvatarPath: string;

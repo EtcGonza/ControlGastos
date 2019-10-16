@@ -25,6 +25,7 @@ export interface Gasto {
     Monto: number;
     Categoria: string;
     Tipo: string;
+    Eliminado: boolean;
     FechaCreacion: string;
     IconoPath: string;
 }
