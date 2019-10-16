@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 import { PresentacionCardsComponent } from './Home_Components/presentacion-cards/presentacion-cards.component';
 import { HeaderComponent } from './Generales/header/header.component';
 import { MenuComponent } from './Generales/menu/menu.component';
-import { ListaDeudaComponent } from './Deuda_Components/lista-deuda/lista-deuda.component';
 import { CardDeudaComponent } from './Deuda_Components/card-deuda/card-deuda.component';
 import { ModalIconGastosPage } from '../Pages/Gastos_Pages/modal-icon-gastos/modal-icon-gastos.page';
 import { IconsSlidesComponent } from './Gastos_Components/icons-slides/icons-slides.component';
@@ -21,6 +20,8 @@ import { AvatarComponent } from './Deuda_Components/avatar/avatar.component';
 
 // Pipes
 import { PipesModule } from 'src/app/Pipes/pipes.module';
+import { CardGastoComponent } from './Gastos_Components/card-gasto/card-gasto.component';
+import { ImageGastoComponent } from './Gastos_Components/image-gasto/image-gasto.component';
 
 
 @NgModule({
@@ -28,7 +29,6 @@ import { PipesModule } from 'src/app/Pipes/pipes.module';
     PresentacionCardsComponent,
     HeaderComponent,
     MenuComponent,
-    ListaDeudaComponent,
     CardDeudaComponent,
     ModalIconGastosPage,
     IconsSlidesComponent,
@@ -37,6 +37,8 @@ import { PipesModule } from 'src/app/Pipes/pipes.module';
     CardSueldoComponent,
     ActividadesComponent,
     AvatarComponent,
+    CardGastoComponent,
+    ImageGastoComponent,
 
   ],
   exports: [
@@ -44,9 +46,9 @@ import { PipesModule } from 'src/app/Pipes/pipes.module';
     MenuComponent,
     PresentacionCardsComponent,
     IconsSlidesComponent,
-    ListaDeudaComponent,
     ActividadesComponent,
     CardDeudaComponent,
+    CardGastoComponent,
   ],
   imports: [
     CommonModule,

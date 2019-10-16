@@ -2,7 +2,7 @@
 
     <div class="contenedor-card">
         <div class="contenedor-avatar">
-            <app-avatar [avatarPath]="this.deuda.AvatarPath"></app-avatar>
+            <app-avatar [avatarPath]="this.deudaObj.AvatarPath"></app-avatar>
         </div>
 
         <ion-card>
@@ -12,21 +12,21 @@
                 <ion-label class="nombre-fecha ion-text-start">
 
                     <ion-text color="dark">
-                        <h3 class="nombre">{{this.deuda.Nombre}}</h3>
+                        <h3 class="nombre">{{this.deudaObj.Nombre}}</h3>
                     </ion-text>
                     <ion-text color="medium">
-                        <p class="fecha">{{this.deuda.FechaCreada}}</p>
+                        <p class="fecha">{{this.deudaObj.FechaCreada | momentPipe}}</p>
                     </ion-text>
                 </ion-label>
 
                 <ion-label class="monto ion-text-end" color="dark">
-                    <ion-text color="turquesa">
+                    <ion-text *ngIf="this.deudaObj.Tipo === 'Cobrar'" color="turquesa">
                         +
                     </ion-text>
-                    <!-- <ion-text color="rojo">
+                    <ion-text *ngIf="this.deudaObj.Tipo === 'Pagar'" color="rojo">
                         -
-                    </ion-text> -->
-                    ${{this.deuda.Monto}}
+                    </ion-text>
+                    ${{this.deudaObj.Monto}}
                 </ion-label>
 
             </ion-item>

@@ -8,10 +8,6 @@
     font-size: 1.5rem;
 }
 
-ion-thumbnail {
-    --border-radius: 3rem;
-}
-
 div {
     display: flex;
     justify-items: center;
@@ -20,4 +16,8 @@ div {
 
 ion-card {
     width: 60%;
+}
+
+ion-list {
+    background-color: transparent;
 }

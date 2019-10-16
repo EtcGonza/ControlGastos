@@ -9,8 +9,8 @@ export interface MisGastos {
 }
 
 export interface Mes {
-    nombreMes: string;
-    MisGastos: GastoMes;
+    NombreMes: string;
+    GastosMes: GastoMes;
 }
 
 export interface GastoMes {

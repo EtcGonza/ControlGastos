@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class CardDeudaComponent implements OnInit {
 
   @Input()deuda: Observable <Deuda>;
+  @Input()deudaObj: Deuda;
   // mostrarbotones = true;
 
   constructor(private deudaService: DeudaService) {}
@@ -20,11 +21,11 @@ export class CardDeudaComponent implements OnInit {
   }
 
   borrarDeuda() {
-    this.deudaService.eliminarDeuda(this.deuda);
+    this.deudaService.eliminarDeuda(this.deudaObj);
   }
 
   completarDeuda() {
-    // this.deudaService.completarDeuda(this.deuda);
+    this.deudaService.completarDeuda(this.deudaObj);
   }
 
 }

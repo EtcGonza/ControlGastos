@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DeudaService } from 'src/app/Services/deuda.service';
 
 @Component({
   selector: 'app-avatar',
@@ -8,8 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AvatarComponent implements OnInit {
 
   @Input()avatarPath: string;
+  cardColor: string;
 
-  constructor() { }
+  constructor(private deudaService: DeudaService) {
+    this.cardColor = this.deudaService.randomColorAvatar();
+  }
 
   ngOnInit() {}
 

@@ -7,120 +7,122 @@
 
         <ion-item class="filtros">
             <ion-label color="light">Tipo</ion-label>
-            <ion-select placeholder="Cobrar">
-                <ion-select-option value="cobrar">Cobrar</ion-select-option>
+            <ion-select color="rosa" interface="popover" (ionChange)="filtroTipo($event)">
                 <ion-select-option value="pagar">Pagar</ion-select-option>
+                <ion-select-option value="cobrar">Cobrar</ion-select-option>
+                <ion-select-option value="todos" selected>Todos</ion-select-option>
             </ion-select>
         </ion-item>
 
         <ion-item class="filtros">
             <ion-label color="light">Completadas</ion-label>
-            <ion-select placeholder="No">
-                <ion-select-option value="cobrar">No</ion-select-option>
-                <ion-select-option value="pagar">Si</ion-select-option>
+            <ion-select interface="popover" (ionChange)="filtroCompleta($event)">
+                <ion-select-option value="no" selected>No</ion-select-option>
+                <ion-select-option value="si">Si</ion-select-option>
             </ion-select>
         </ion-item>
 
     </div>
     <!-- FIN FILTROS -->
 
+    <!--MOSTRAR DEUDAS INCOMPLETAS -->
 
-    <!-- NO EXISTEN DEUDAS -->
-    <!-- <ion-item *ngIf="!existenCobra && !existenPagar" color="aqua">
-        <ion-label class="no-existen ion-text-center ion-margin-top" color="orange">
+    <!-- NO EXISTEN DEUDAS INCOMPLETAS-->
+    <ion-item lines="none" class="ion-margin-top" color="transparente" *ngIf="!this.existeCobrar && !this.existePagar && !this.filtroCompletas">
+        <ion-label class="no-existen ion-text-center ion-margin-top" color="light">
             No existen deudas
         </ion-label>
-    </ion-item> -->
-    <!--FIN NO EXISTEN DEUDAS -->
+    </ion-item>
+    <!--FIN NO EXISTEN DEUDAS INCOMPLETAS-->
 
-    <ion-list *ngIf="this.existeCobrar">
+    <div *ngIf="!this.filtroCompletas">
 
-        <ion-list-header class="ion-list-header">
-            <ion-label color="light">
-                Cobrar
-            </ion-label>
-        </ion-list-header>
+        <ion-list *ngIf="this.existeCobrar && this.filtroCobrar">
 
-        <div *ngFor="let deuda of this.deudasCobrar">
-            <app-card-deuda [deuda]="deuda"></app-card-deuda>
-        </div>
+            <ion-list-header class="ion-list-header">
+                <ion-label color="light">
+                    Cobrar
+                </ion-label>
+            </ion-list-header>
 
-    </ion-list>
+            <div *ngFor="let deuda of this.deudasCobrar">
+                <app-card-deuda [deudaObj]="deuda"></app-card-deuda>
+            </div>
 
-    <ion-list *ngIf="this.existePagar">
-
-        <ion-list-header class="ion-list-header">
-            <ion-label color="light">
-                Pagar
-            </ion-label>
-        </ion-list-header>
-
-        <div *ngFor="let deuda of this.deudasPagar">
-            <app-card-deuda [deuda]="deuda"></app-card-deuda>
-        </div>
-
-    </ion-list>
+        </ion-list>
 
 
+        <ion-list *ngIf="this.existePagar && this.filtroPagar">
+
+            <ion-list-header class="ion-list-header">
+                <ion-label color="light">
+                    Pagar
+                </ion-label>
+            </ion-list-header>
+
+            <div *ngFor="let deuda of this.deudasPagar">
+                <app-card-deuda [deudaObj]="deuda"></app-card-deuda>
+            </div>
+
+        </ion-list>
+
+    </div>
+
+    <!--FIN MOSTRAR DEUDAS INCOMPLETAS -->
+
+    <!--MOSTRAR DEUDAS COMPLETAS -->
+
+    <!-- NO EXISTEN DEUDAS COMPLETAS-->
+    <ion-item lines="none" class="ion-margin-top" color="transparente" *ngIf="!this.existeCobrarCompletas && !this.existePagarCompletas && this.filtroCompletas">
+        <ion-label class="no-existen ion-text-center ion-margin-top" color="light">
+            No existen deudas
+        </ion-label>
+    </ion-item>
+    <!--FIN NO EXISTEN DEUDAS COMPLETAS-->
 
 
+    <div *ngIf="this.filtroCompletas">
+
+        <ion-list *ngIf="this.existeCobrarCompletas && this.filtroCobrar">
+
+            <ion-list-header class="ion-list-header">
+                <ion-label color="light">
+                    Cobrar
+                </ion-label>
+            </ion-list-header>
+
+            <div *ngFor="let deuda of this.cobrarCompletadas">
+                <app-card-deuda [deudaObj]="deuda"></app-card-deuda>
+            </div>
+
+        </ion-list>
 
 
-    <!-- <div>
-        <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.misDeudas"></app-lista-deuda>
-    </div> -->
+        <ion-list *ngIf="this.existePagarCompletas && this.filtroPagar">
 
-    <!-- <div *ngIf="this.existenCobra">
-                <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.listaCobrar" [mostrarBotones]="true"></app-lista-deuda>
-            </div> -->
+            <ion-list-header class="ion-list-header">
+                <ion-label color="light">
+                    Pagar
+                </ion-label>
+            </ion-list-header>
+
+            <div *ngFor="let deuda of this.pagarCompletadas">
+                <app-card-deuda [deudaObj]="deuda"></app-card-deuda>
+            </div>
+
+        </ion-list>
+
+    </div>
+
+    <!--FIN MOSTRAR DEUDAS COMPLETAS -->
+
 
     <!-- BOTON FAB -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button color="rosaSangre" (click)="navCrearDeuda()">
+        <ion-fab-button color="fucsia" (click)="navCrearDeuda()">
             <ion-icon name="add" color="light"></ion-icon>
         </ion-fab-button>
     </ion-fab>
     <!-- FIN BOTON FAB -->
 
 </ion-content>
-
-<!-- <ion-segment color="orange" (ionChange)="mostrar($event)">
-        <ion-segment-button value="incompletas" checked>
-            <ion-label>Incompletas</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="completadas">
-            <ion-label>Completadas</ion-label>
-        </ion-segment-button>
-    </ion-segment>
-
-
-
-    <ion-item *ngIf="!existenCobra && !existenPagar" color="aqua">
-        <ion-label class="no-existen ion-text-center ion-margin-top" color="orange">
-            No existen deudas
-        </ion-label>
-    </ion-item>
-
-
-
-    <div *ngIf="!mostrarCompletadas">
-        <div *ngIf="this.existenPagar">
-            <app-lista-deuda [titulo]="'Pagar'" [Deudas]="this.listaPagar" [mostrarBotones]="true"></app-lista-deuda>
-        </div>
-
-        <div *ngIf="this.existenCobra">
-            <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.listaCobrar" [mostrarBotones]="true"></app-lista-deuda>
-        </div>
-    </div>
-
-
-
-    <div *ngIf="mostrarCompletadas">
-        <div *ngIf="this.existenPagar">
-            <app-lista-deuda [titulo]="'Pagar'" [Deudas]="this.completadasPagar" [mostrarBotones]="false"></app-lista-deuda>
-        </div>
-
-        <div *ngIf="this.existenCobra">
-            <app-lista-deuda [titulo]="'Cobrar'" [Deudas]="this.completadasCobrar" [mostrarBotones]="false"></app-lista-deuda>
-        </div>
-    </div> -->

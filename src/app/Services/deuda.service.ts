@@ -2,8 +2,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 import { Deuda } from '../Models/deudaInterface';
 import * as moment from 'moment';
-import 'moment/locale/pt-br';
 import { StorageService } from './storage.service';
+import 'moment/locale/pt-br';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,7 @@ export class DeudaService {
       this.deudas.unshift(insertarDeuda);
       this.deudasListener.emit(this.deudas);
 
-      // console.log('Se inserto en porPagar', this.deudas);
-
+      // console.log('Se inserto en porPagar', this.deudas);<
       // this.storage.guardarDeudas(this.porCobrar, 'pagar');
 
     } else if (tipo === 'cobrar') {
@@ -35,7 +34,6 @@ export class DeudaService {
       this.deudasListener.emit(this.deudas);
 
       // console.log('Se inserto en porCobrar', this.deudas);
-
       // this.storage.guardarDeudas(this.porCobrar, 'cobrar');
 
     } else {
@@ -69,12 +67,8 @@ export class DeudaService {
   }
 
   eliminarDeuda(deuda: Deuda) {
-
     let index: number;
-
     index = this.deudas.indexOf(deuda);
-
-    console.log('Index es: ', index);
 
     if (index !== -1) {
         this.deudas.splice(index, 1);
@@ -82,24 +76,13 @@ export class DeudaService {
       } else {
         console.log('Error al querer eliminar la deuda');
       }
-
   }
 
-  // completarDeuda(deuda: Deuda) {
-
-  //   deuda.Completada = true;
-  //   deuda.FechaCompletado = moment().locale('es').format('dddd, D MMMM');
-
-  //   if (deuda.Tipo === 'Pagar') {
-  //     this.completadasPagar.unshift(deuda);
-  //     this.eliminarDeuda(deuda.id, deuda.Tipo);
-
-  //   } else if (deuda.Tipo === 'Cobrar') {
-  //     this.completadasCobrar.unshift(deuda);
-  //     this.eliminarDeuda(deuda.id, deuda.Tipo);
-  //   }
-
-  // }
+  completarDeuda(deuda: Deuda) {
+    deuda.Completada = true;
+    deuda.FechaCompletado = moment().locale('es').format('dddd, D MMMM');
+    this.deudasListener.emit(this.deudas);
+  }
 
   setDeuda(nombre: string, monto: number, sexo: string) {
 
@@ -118,6 +101,12 @@ export class DeudaService {
 
   getDeudas() {
     return this.deudas;
+  }
+
+  randomColorAvatar() {
+    const randomNumber = Math.floor(Math.random() * 4);
+    const colores = ['rojo', 'verde', 'turquesa', 'rosa', 'fucsia'];
+    return colores[randomNumber];
   }
 }
 

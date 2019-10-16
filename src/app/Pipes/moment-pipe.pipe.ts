@@ -7,7 +7,7 @@ import { Moment } from 'moment';
 export class MomentPipePipe implements PipeTransform {
 
   transform(fechaEntera: Moment): string {
-    return fechaEntera.format('dddd, D MMMM');
+    return fechaEntera.locale('es').format('dddd, DD, MM');
   }
 
 }

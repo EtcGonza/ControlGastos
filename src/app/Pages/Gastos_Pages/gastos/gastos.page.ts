@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { GastoMes } from '../../../Models/gastoInterface';
+import { GastosService } from '../../../Services/gastos.service';
 
 @Component({
   selector: 'app-gastos',
@@ -8,9 +10,27 @@ import { NavController } from '@ionic/angular';
 })
 export class GastosPage implements OnInit {
 
-  constructor(private NavCtrl: NavController) { }
+  misGastos: GastoMes;
+  existenGastos = false;
 
-  ngOnInit() {}
+  constructor(private gastosService: GastosService,
+              private aplicationRef: ApplicationRef,
+              private NavCtrl: NavController) {}
+
+  ngOnInit() {
+    this.gastosService.mesListener.subscribe( (gastosMes: GastoMes) => {
+      this.misGastos = gastosMes;
+      console.log('Subscribe: ', this.misGastos);
+
+      if (this.misGastos.Gastos.length > 0) {
+        this.existenGastos = true;
+      } else {
+        this.existenGastos = false;
+      }
+
+      this.aplicationRef.tick();
+    });
+  }
 
   crearGasto() {
     this.NavCtrl.navigateForward('/nuevo-gasto');

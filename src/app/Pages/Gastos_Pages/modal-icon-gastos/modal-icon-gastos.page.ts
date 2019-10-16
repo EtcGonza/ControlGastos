@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IconsSlidesComponent } from '../../../Components/Gastos_Components/icons-slides/icons-slides.component';
-import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-icon-gastos',

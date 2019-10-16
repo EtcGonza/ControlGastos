@@ -1,0 +1,72 @@
+ion-item-sliding {
+    z-index: 0;
+}
+
+.contenedor-card {
+    display: flex;
+}
+
+ion-card {
+    width: 70%;
+    background-color: white;
+    border-radius: 6rem;
+    height: 6.2rem;
+    position: relative;
+    top: -0.5rem;
+    left: -5rem;
+    margin-left: 1rem;
+    z-index: 0;
+}
+
+.image-gasto {
+    margin-left: 2rem;
+    z-index: 2;
+}
+
+.nombre {
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+}
+
+.fecha {
+    line-height: 1rem;
+    font-size: 1.3rem;
+}
+
+.nombre-fecha {
+    margin-left: 3rem;
+}
+
+.contendor-monto {
+    position: relative;
+    top: 9px;
+}
+
+.monto {
+    font-size: 1.8rem;
+    font-weight: bold;
+    // padding: 0.5rem;
+}
+
+ion-chip {
+    height: 2.2rem;
+    // padding: 0.6rem;
+}
+
+.tipo-gasto {
+    font-size: 1.4rem;
+}
+
+.hijos-monto {
+    line-height: 1.5rem;
+}
+
+.iconos {
+    width: 4.5rem;
+    height: 4.5rem;
+}
+
+ion-item-options {
+    height: 6.1rem;
+}

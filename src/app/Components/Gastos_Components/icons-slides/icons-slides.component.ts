@@ -12,7 +12,7 @@ export class IconsSlidesComponent implements OnInit {
   @Input()categoria: string;
 
   slideOpts = {
-    slidesPerView: 2.2,
+    slidesPerView: 2.5,
     freeMode: false
   };
 
