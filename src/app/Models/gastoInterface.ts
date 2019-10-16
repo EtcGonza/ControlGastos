@@ -1,5 +1,3 @@
-import { Moment } from 'moment';
-
 export interface MisGastos {
     Año: number;
     Meses: Mes [];

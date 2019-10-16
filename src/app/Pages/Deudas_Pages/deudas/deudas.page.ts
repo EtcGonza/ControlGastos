@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy ,ApplicationRef } from '@angular/core';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { Deuda } from 'src/app/Models/deudaInterface';
 import { DeudaService } from 'src/app/Services/deuda.service';
 import { NavController } from '@ionic/angular';
@@ -8,7 +8,7 @@ import { NavController } from '@ionic/angular';
   templateUrl: './deudas.page.html',
   styleUrls: ['./deudas.page.scss'],
 })
-export class DeudasPage implements OnInit, OnDestroy {
+export class DeudasPage implements OnInit {
 
   filtroCompletas = false;
   filtroPagar = true;
@@ -38,10 +38,6 @@ export class DeudasPage implements OnInit, OnDestroy {
 
   ionViewWillEnter() {
     this.deudaService.getDeudas();
-  }
-
-  ngOnDestroy() {
-    console.log('Destruido');
   }
 
   existenPagar() {
@@ -122,7 +118,7 @@ export class DeudasPage implements OnInit, OnDestroy {
     });
   }
 
-  obtenerDeudas(){
+  obtenerDeudas() {
     this.deudaService.getDeudas();
   }
 }

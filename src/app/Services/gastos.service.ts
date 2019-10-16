@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { GastoMes, Gasto, MisGastos, Mes } from '../Models/gastoInterface';
 import * as moment from 'moment';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,12 @@ export class GastosService {
   misGastos: MisGastos [] = [];
   libMoment = moment().locale('es');
 
-
   // gastosListener = new EventEmitter <MisGastos []> ();
   mesListener = new EventEmitter <GastoMes> ();
 
-  constructor() {}
+  constructor(private storage: Storage) {
+    this.cargarGastosStorage();
+  }
 
   crearGasto(descripcion: string, monto: number, categoria: string, tipo: string, icono: string) {
 
@@ -123,6 +125,7 @@ export class GastosService {
     }
 
     // Guardar en Storage
+    this.guardarGastosStorage();
     console.log('Guarde en Storage');
 
   }
@@ -234,7 +237,7 @@ export class GastosService {
 
   getMisGastos(): any {
     const mesActual = this.getMesActual();
-    return mesActual.GastosMes;
+    this.mesListener.emit(mesActual.GastosMes);
   }
 
   asignarIcono(icono: string) {
@@ -244,8 +247,24 @@ export class GastosService {
   eliminarGasto(gasto: Gasto) {
     gasto.Eliminado = true;
     // Guardar en Storage
+    this.guardarGastosStorage();
 
     console.log('Gasto eliminado');
     this.mesListener.emit();
+  }
+
+  guardarGastosStorage() {
+    this.storage.set('misgastos', this.misGastos);
+  }
+
+  async cargarGastosStorage() {
+    const gastos = await this.storage.get('misgastos');
+
+    if (gastos) {
+      this.misGastos = gastos;
+    } else {
+      console.log('No existen gastos en el storage');
+      this.misGastos = [];
+    }
   }
 }

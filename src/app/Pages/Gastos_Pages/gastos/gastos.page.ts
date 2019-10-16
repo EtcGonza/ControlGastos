@@ -18,22 +18,32 @@ export class GastosPage implements OnInit {
               private NavCtrl: NavController) {}
 
   ngOnInit() {
-    this.gastosService.mesListener.subscribe( (gastosMes: GastoMes) => {
-      this.misGastos = gastosMes;
-      console.log('Subscribe: ', this.misGastos);
+    this.obtenerCambios();
+  }
 
-      if (this.misGastos.Gastos.length > 0) {
-        this.existenGastos = true;
-      } else {
-        this.existenGastos = false;
-      }
-
-      this.aplicationRef.tick();
-    });
+  ionViewWillEnter() {
+    this.gastosService.getMisGastos();
   }
 
   crearGasto() {
     this.NavCtrl.navigateForward('/nuevo-gasto');
+  }
+
+  comprobarGastos() {
+    if (this.misGastos.Gastos.length > 0) {
+      this.existenGastos = true;
+    } else {
+      this.existenGastos = false;
+    }
+  }
+
+  obtenerCambios() {
+    this.gastosService.mesListener.subscribe( (gastosMes: GastoMes) => {
+      this.misGastos = gastosMes;
+      this.comprobarGastos();
+      // console.log('Subscribe: ', this.misGastos);
+      this.aplicationRef.tick();
+    });
   }
 
 }
