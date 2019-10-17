@@ -39,14 +39,14 @@ export class DeudaService {
     // tslint:disable-next-line: prefer-const
     let insertarDeuda: Deuda = this.setDeuda(nombre, monto, sexo);
 
-    if (tipo === 'pagar') {
+    if (tipo === 'Pagar') {
       insertarDeuda.Tipo = 'Pagar';
       this.deudas.unshift(insertarDeuda);
       this.deudasListener.emit(this.deudas);
       // console.log('Se inserto en porPagar', this.deudas);<
       // this.storage.guardarDeudas(this.porCobrar, 'pagar');
 
-    } else if (tipo === 'cobrar') {
+    } else if (tipo === 'Cobrar') {
       insertarDeuda.Tipo = 'Cobrar';
       this.deudas.unshift(insertarDeuda);
       this.deudasListener.emit(this.deudas);
@@ -64,14 +64,14 @@ export class DeudaService {
   asignarAvatar(sexo: string) {
     const randomNumber = Math.floor(Math.random() * 8) + 1;
 
-    if (sexo === 'hombre') {
+    if (sexo === 'Hombre') {
       return `/assets/personas-icons/hombre/hombre_${randomNumber}.svg`;
 
-   } else if ( sexo === 'mujer') {
+   } else if ( sexo === 'Mujer') {
 
       return `/assets/personas-icons/mujeres/mujer_${randomNumber}.svg`;
 
-   } else if (sexo === 'otro') {
+   } else if (sexo === 'Otro') {
 
     if (randomNumber / 2 === 0) {
       return `/assets/personas-icons/mujeres/mujer_${randomNumber}.svg`;
@@ -100,7 +100,7 @@ export class DeudaService {
 
   completarDeuda(deuda: Deuda) {
     deuda.Completada = true;
-    deuda.FechaCompletado = moment().locale('es').format('dddd, D MMMM');
+    deuda.FechaCompletado = moment().locale('es').format('L');
     this.deudasListener.emit(this.deudas);
   }
 
@@ -110,6 +110,7 @@ export class DeudaService {
       Tipo: 'Pagar',
       id: uuid(),
       Nombre: nombre,
+      Sexo: this.asignarSexo(sexo),
       Monto: monto,
       FechaCreada: moment().locale('es').format('L'),
       Completada: false,
@@ -117,6 +118,10 @@ export class DeudaService {
       AvatarPath: this.asignarAvatar(sexo),
     };
     return setearDeuda;
+  }
+
+  asignarSexo(sexo) {
+    return sexo;
   }
 
   getDeudas() {
@@ -127,5 +132,23 @@ export class DeudaService {
     const randomNumber = Math.floor(Math.random() * 4);
     const colores = ['rojo', 'verde', 'turquesa', 'rosa', 'fucsia'];
     return colores[randomNumber];
+  }
+
+  buscarDeuda(idDeuda: string): Deuda {
+    const deuda = this.deudas.find( elemento => elemento.id === idDeuda);
+
+    if (deuda) {
+      return deuda;
+    } else {
+      console.error('[ERROR] No existe ninguna deuda con el id ingresado.');
+    }
+
+  }
+
+  editarDeuda(miDeuda: Deuda) {
+    const indexDeuda = this.deudas.findIndex ( elemento => elemento.id === miDeuda.id);
+    this.deudas[indexDeuda] = miDeuda;
+    this.guardarDeudasStorage();
+    // this.deudasListener.emit(this.deudas);
   }
 }

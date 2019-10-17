@@ -1,6 +1,6 @@
 <ion-content class="fondo1">
 
-    <form [formGroup]="formularioDeuda" (ngSubmit)="crearDeuda()" class="ion-padding">
+    <form [formGroup]="formularioDeuda" (ngSubmit)="guardarDeuda()" class="ion-padding">
 
         <ion-card class="bordes-redondos sombras">
 
@@ -15,7 +15,7 @@
                             </ion-buttons>
                             <ion-text color="rosa">
                                 <div class="ion-text-left header-formularios">
-                                    Nueva Deuda
+                                    Editar Deuda
                                 </div>
                             </ion-text>
                         </ion-toolbar>
@@ -89,7 +89,7 @@
                 <div class="contenedor-boton ion-margin-top">
                     <ion-button type="submit" size="large" color="rosa" [disabled]="formularioDeuda.invalid" (click)="goBack()">
                         <ion-text color="light">
-                            Crear Deuda
+                            Guardar Deuda
                         </ion-text>
                         <img class="icono-boton" src="/assets/icons/checked.svg">
                     </ion-button>

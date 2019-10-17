@@ -1,0 +1,41 @@
+ion-card {
+    background-color: white;
+}
+
+.header-deuda {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.item-has-focus {
+    --highlight-color-focused: var(--ion-color-rosa) !important;
+    --highlight-color-invalid: var(--ion-color-rojo) !important;
+    --highlight-color-valid: var(--ion-color-rosa) !important;
+}
+
+.ion-invalid {
+    --highlight-color-focused: var(--ion-color-rosa) !important;
+    --highlight-color-invalid: var(--ion-color-rojo) !important;
+    --highlight-color-valid: var(--ion-color-rosa) !important;
+}
+
+.item-label-floating {
+    --highlight-color-focused: var(--ion-color-rosa) !important;
+    --highlight-color-invalid: var(--ion-color-rojo) !important;
+    --highlight-color-valid: var(--ion-color-rosa) !important;
+}
+
+.texto-segment {
+    font-size: 2rem;
+}
+
+.contenedor-boton {
+    display: flex;
+    justify-content: center;
+}
+
+.icono-boton {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-left: 1rem;
+}
