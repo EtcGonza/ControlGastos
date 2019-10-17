@@ -221,5 +221,9 @@
     {
         "path": "wifi.svg",
         "categoria": "Impuestos"
+    },
+    {
+        "path": "edit.svg",
+        "categoria": "Otros"
     }
 ]
