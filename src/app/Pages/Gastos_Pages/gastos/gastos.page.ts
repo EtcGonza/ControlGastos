@@ -41,9 +41,21 @@ export class GastosPage implements OnInit {
     this.gastosService.mesListener.subscribe( (gastosMes: GastoMes) => {
       this.misGastos = gastosMes;
       this.comprobarGastos();
+      this.filtrarGastos();
       // console.log('Subscribe: ', this.misGastos);
       this.aplicationRef.tick();
     });
+  }
+
+  filtrarGastos() {
+
+    if (this.existenGastos) {
+      this.misGastos.Gastos = this.misGastos.Gastos.filter( elemento => elemento.Eliminado === false );
+      console.log('Gastos Filtrados');
+    } else {
+      console.error('[WARNING] No hay gastos que filtrar');
+    }
+
   }
 
 }

@@ -32,8 +32,8 @@ export class DeudasPage implements OnInit {
 
   ngOnInit() {
     this.obtenerCambios();
-    console.log('Mis deudas (COMPONENT): ', this.misDeudas);
-    console.log('Mis Deudas (SERVICE)', this.deudaService.deudas);
+    // console.log('Mis deudas (COMPONENT): ', this.misDeudas);
+    // console.log('Mis Deudas (SERVICE)', this.deudaService.deudas);
   }
 
   ionViewWillEnter() {

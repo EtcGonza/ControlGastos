@@ -24,14 +24,14 @@ export class DeudaService {
       this.deudas = misDeudas;
       console.log('Existen Deudas');
     } else {
-      console.error('No hay deudas para cargar');
+      console.error('[WARNING] No hay deudas para cargar');
       this.deudas = [];
     }
   }
 
   guardarDeudasStorage() {
     this.storage.set('misdeudas', this.deudas);
-    // console.log('Deudas Guardadas');
+    console.log('Deudas Guardadas');
   }
 
   crearDeuda(tipo: string , nombre: string, monto: number, sexo: string) {
@@ -111,7 +111,7 @@ export class DeudaService {
       id: uuid(),
       Nombre: nombre,
       Monto: monto,
-      FechaCreada: moment().locale('es').format('dddd, DD, MM'),
+      FechaCreada: moment().locale('es').format('L'),
       Completada: false,
       FechaCompletado: false,
       AvatarPath: this.asignarAvatar(sexo),

@@ -138,7 +138,7 @@ export class GastosService {
       Categoria: categoria,
       Tipo: tipo,
       Eliminado: false,
-      FechaCreacion: moment().locale('es').format('dddd, D MMMM'),
+      FechaCreacion: moment().locale('es').format('L'),
       IconoPath: this.asignarIcono(icono)
     };
     return gastoTemp;
@@ -246,11 +246,12 @@ export class GastosService {
 
   eliminarGasto(gasto: Gasto) {
     gasto.Eliminado = true;
+    const mesActual = this.getMesActual();
+
     // Guardar en Storage
     this.guardarGastosStorage();
-
-    console.log('Gasto eliminado');
-    this.mesListener.emit();
+    console.log('Gasto eliminado:' , this.misGastos);
+    this.mesListener.emit(mesActual.GastosMes);
   }
 
   guardarGastosStorage() {
