@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'nueva-deuda', loadChildren: './Pages/Deudas_Pages/nueva-deuda/nueva-deuda.module#NuevaDeudaPageModule' },
   { path: 'deudas', loadChildren: './Pages/Deudas_Pages/deudas/deudas.module#DeudasPageModule' },
   { path: 'tabs', loadChildren: './Pages/tabs/tabs.module#TabsPageModule' },
-  { path: 'editar-deuda/:idDeuda', loadChildren: './Pages/Deudas_Pages/editar-deuda/editar-deuda.module#EditarDeudaPageModule' }
+  { path: 'editar-deuda/:idDeuda', loadChildren: './Pages/Deudas_Pages/editar-deuda/editar-deuda.module#EditarDeudaPageModule' },
+  { path: 'editar-gasto/:idGasto', loadChildren: './Pages/Gastos_Pages/editar-gasto/editar-gasto.module#EditarGastoPageModule' }
 ];
 
 @NgModule({

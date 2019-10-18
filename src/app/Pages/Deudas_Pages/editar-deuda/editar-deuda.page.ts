@@ -36,13 +36,8 @@ export class EditarDeudaPage implements OnInit {
   guardarDeuda() {
 
     if (this.formularioDeuda.invalid) { return; }
-
-    this.miDeuda.Sexo = this.formularioDeuda.value.sexo;
-    this.miDeuda.Nombre = this.formularioDeuda.value.nombre;
-    this.miDeuda.Tipo = this.formularioDeuda.value.tipo;
-    this.miDeuda.Monto = this.formularioDeuda.value.monto;
-
-    this.deudaService.editarDeuda(this.miDeuda);
+    this.guardarCambios();
+    this.deudaService.guardarDeudasStorage();
   }
 
   buscarDeuda() {
@@ -60,6 +55,13 @@ export class EditarDeudaPage implements OnInit {
       sexo: this.miDeuda.Sexo,
       tipo: this.miDeuda.Tipo
     });
+  }
+
+  guardarCambios() {
+    this.miDeuda.Sexo = this.formularioDeuda.value.sexo;
+    this.miDeuda.Nombre = this.formularioDeuda.value.nombre;
+    this.miDeuda.Tipo = this.formularioDeuda.value.tipo;
+    this.miDeuda.Monto = this.formularioDeuda.value.monto;
   }
 
 }

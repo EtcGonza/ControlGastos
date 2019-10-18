@@ -19,6 +19,7 @@ export interface GastoMes {
 }
 
 export interface Gasto {
+    Id: string;
     Descripcion: string;
     Monto: number;
     Categoria: string;

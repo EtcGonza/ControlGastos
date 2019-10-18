@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { GastoMes, Gasto, MisGastos, Mes } from '../Models/gastoInterface';
 import * as moment from 'moment';
+import { v4 as uuid } from 'uuid';
 import { Storage } from '@ionic/storage';
 
 @Injectable({
@@ -133,6 +134,7 @@ export class GastosService {
   setGasto(descripcion: string, monto: number, categoria: string, tipo: string, icono: string) {
 
     const gastoTemp: Gasto = {
+      Id: uuid(),
       Descripcion: descripcion,
       Monto: monto,
       Categoria: categoria,
@@ -267,5 +269,10 @@ export class GastosService {
       console.log('No existen gastos en el storage');
       this.misGastos = [];
     }
+  }
+
+  buscarGasto(idGasto: string): Gasto {
+    const mesActual = this.getMesActual();
+    return mesActual.GastosMes.Gastos.find( elemento => elemento.Id === idGasto);
   }
 }

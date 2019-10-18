@@ -31,7 +31,7 @@ export class CardDeudaComponent implements OnInit {
   }
 
   editarDeuda() {
-    this.navCtrl.navigateRoot(`/editar-deuda/${this.deudaObj.id}`);
+    this.navCtrl.navigateForward(`/editar-deuda/${this.deudaObj.id}`);
   }
 
 }

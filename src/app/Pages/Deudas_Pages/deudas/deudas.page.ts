@@ -1,7 +1,7 @@
-import { Component, OnInit, ApplicationRef } from '@angular/core';
+import { Component, OnInit, ApplicationRef, ViewChild } from '@angular/core';
 import { Deuda } from 'src/app/Models/deudaInterface';
 import { DeudaService } from 'src/app/Services/deuda.service';
-import { NavController } from '@ionic/angular';
+import { NavController, IonList } from '@ionic/angular';
 
 @Component({
   selector: 'app-deudas',
@@ -9,6 +9,8 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./deudas.page.scss'],
 })
 export class DeudasPage implements OnInit {
+
+  @ViewChild(IonList, {static: false}) lista: IonList;
 
   filtroCompletas = false;
   filtroPagar = true;
@@ -36,7 +38,7 @@ export class DeudasPage implements OnInit {
 
   ionViewWillEnter() {
     this.deudaService.getDeudas();
-    console.log(this.misDeudas);
+    this.lista.closeSlidingItems();
   }
 
   existenPagar() {
