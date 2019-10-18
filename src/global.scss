@@ -35,6 +35,16 @@ html {
     font-size: 62.5%;
 }
 
+ion-searchbar {
+    .searchbar-input-container {
+        .searchbar-input {
+            border-radius: 2rem !important;
+        }
+    }
+    margin-left: 2rem;
+    width: 70%;
+}
+
 // Utilidades Globales 
 .texto-bold {
     font-weight: bold;
