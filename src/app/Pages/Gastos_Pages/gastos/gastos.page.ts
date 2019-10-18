@@ -1,5 +1,5 @@
-import { Component, OnInit, ApplicationRef } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit, ApplicationRef, ViewChild } from '@angular/core';
+import { NavController, IonList } from '@ionic/angular';
 import { GastoMes } from '../../../Models/gastoInterface';
 import { GastosService } from '../../../Services/gastos.service';
 
@@ -13,6 +13,8 @@ export class GastosPage implements OnInit {
   misGastos: GastoMes;
   existenGastos = false;
 
+  @ViewChild(IonList, {static: false}) lista: IonList;
+
   constructor(private gastosService: GastosService,
               private aplicationRef: ApplicationRef,
               private NavCtrl: NavController) {}
@@ -23,6 +25,7 @@ export class GastosPage implements OnInit {
 
   ionViewWillEnter() {
     this.gastosService.getMisGastos();
+    this.cerrarSliding();
   }
 
   crearGasto() {
@@ -51,11 +54,17 @@ export class GastosPage implements OnInit {
 
     if (this.existenGastos) {
       this.misGastos.Gastos = this.misGastos.Gastos.filter( elemento => elemento.Eliminado === false );
-      console.log('Gastos Filtrados');
+      // console.log('Gastos Filtrados');
     } else {
       console.error('[WARNING] No hay gastos que filtrar');
     }
 
+  }
+
+  cerrarSliding() {
+    if (this.lista) {
+      this.lista.closeSlidingItems();
+    }
   }
 
 }

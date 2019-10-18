@@ -62,6 +62,7 @@ export class EditarDeudaPage implements OnInit {
     this.miDeuda.Nombre = this.formularioDeuda.value.nombre;
     this.miDeuda.Tipo = this.formularioDeuda.value.tipo;
     this.miDeuda.Monto = this.formularioDeuda.value.monto;
+    this.miDeuda.AvatarPath = this.deudaService.asignarAvatar(this.miDeuda.Sexo);
   }
 
 }

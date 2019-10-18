@@ -38,7 +38,7 @@ export class DeudasPage implements OnInit {
 
   ionViewWillEnter() {
     this.deudaService.getDeudas();
-    this.lista.closeSlidingItems();
+    this.cerrarSliding();
   }
 
   existenPagar() {
@@ -121,5 +121,11 @@ export class DeudasPage implements OnInit {
 
   obtenerDeudas() {
     this.deudaService.getDeudas();
+  }
+
+  cerrarSliding() {
+    if (this.lista) {
+      this.lista.closeSlidingItems();
+    }
   }
 }

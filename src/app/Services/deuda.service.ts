@@ -145,10 +145,13 @@ export class DeudaService {
 
   }
 
-  editarDeuda(miDeuda: Deuda) {
-    const indexDeuda = this.deudas.findIndex ( elemento => elemento.id === miDeuda.id);
-    this.deudas[indexDeuda] = miDeuda;
-    this.guardarDeudasStorage();
-    // this.deudasListener.emit(this.deudas);
-  }
+  // editarDeuda(miDeuda: Deuda) {
+  //   const indexDeuda = this.deudas.findIndex ( elemento => elemento.id === miDeuda.id);
+  //   console.log(miDeuda.Sexo);
+  //   miDeuda.AvatarPath = this.asignarAvatar(miDeuda.Sexo);
+
+  //   this.deudas[indexDeuda] = miDeuda;
+  //   this.guardarDeudasStorage();
+  //   // this.deudasListener.emit(this.deudas);
+  // }
 }
