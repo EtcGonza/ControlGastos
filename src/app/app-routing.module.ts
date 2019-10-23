@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './Pages/tabs/tabs.module#TabsPageModule' },
   { path: 'editar-deuda/:idDeuda', loadChildren: './Pages/Deudas_Pages/editar-deuda/editar-deuda.module#EditarDeudaPageModule' },
   { path: 'editar-gasto/:idGasto', loadChildren: './Pages/Gastos_Pages/editar-gasto/editar-gasto.module#EditarGastoPageModule' },
+  { path: 'agregar-saldo', loadChildren: './Pages/Home_Pages/agregar-saldo/agregar-saldo.module#AgregarSaldoPageModule' },
 ];
 
 @NgModule({
