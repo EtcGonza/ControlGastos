@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MiBilleteraService } from '../../../Services/mi-billetera.service';
+import { Billetera } from '../../../Models/billeteraInterface';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,13 @@ import { MiBilleteraService } from '../../../Services/mi-billetera.service';
 })
 export class HomePage implements OnInit{
 
-  constructor(private MiBilleteraService: MiBilleteraService) {}
+  private miBilletera: Billetera;
+
+  constructor(private miBilleteraService: MiBilleteraService) {}
 
   ngOnInit() {
-    
+    this.miBilleteraService.billeteraListener.subscribe( (miBilletera: Billetera) => {
+        this.miBilletera = miBilletera;
+      });
   }
 }
