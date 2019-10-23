@@ -6,38 +6,73 @@ import { Billetera } from '../Models/billeteraInterface';
 })
 export class MiBilleteraService {
 
-  private miBilletera = 0; // Corresponde al dinero actual que tengo.
-  private gastado = 0;     // Corresponde al dinero que gaste.
-  private sueldo = 0;      // Corresponde al dinero con el que empece el mes.
-  private objBilletera: Billetera;
-  public billeteraListener = new EventEmitter <Billetera> ();
+  miBilletera = 15000;  // Corresponde al dinero actual que tengo.
+  gastado = 2000;       // Corresponde al dinero que gaste.
+  sueldo = 20000;       // Corresponde al dinero con el que empece el mes.
+  // objBilletera: Billetera = {
+  //   MiBilletera: 2222,
+  //   Gastado: 1111,
+  //   Sueldo: 150
+  // };
 
-  constructor() {}
+  objBilleteraListener = new EventEmitter <Billetera> ();
+  billeteraListener = new EventEmitter <number> ();
+  sueldoListener = new EventEmitter <number> ();
+  gastadoListener = new EventEmitter <number> ();
+
+  constructor() {
+    this.actualizarBilletera();
+    this.emitirBilletera();
+  }
 
   // Funcion para agregar el sueldo iniciar del mes.
   iniciarSueldo(monto: number) {
   this.sueldo = monto;
   this.miBilletera = monto;
   this.actualizarBilletera();
-  this.billeteraListener.emit(this.objBilletera);
+  this.emitirSueldo();
+  this.emitirBilletera();
   }
 
   sumarGasto(monto: number) {
   this.gastado = this.gastado + monto;
   this.miBilletera = this.miBilletera - monto;
   this.actualizarBilletera();
-  this.billeteraListener.emit(this.objBilletera);
+  this.emitirGastado();
+  this.emitirBilletera();
   }
 
   sumarMiBilletera(monto: number) {
   this.miBilletera = this.miBilletera + monto;
   this.actualizarBilletera();
-  this.billeteraListener.emit(this.objBilletera);
+  this.emitirBilletera();
   }
 
   actualizarBilletera() {
-    this.objBilletera.Gastado = this.gastado;
-    this.objBilletera.MiBilletera = this.miBilletera;
-    this.objBilletera.Sueldo = this.sueldo;
+    // this.objBilletera.Gastado = this.gastado;
+    // this.objBilletera.MiBilletera = this.miBilletera;
+    // this.objBilletera.Sueldo = this.sueldo;
+  }
+
+  emitirSueldo() {
+    this.sueldoListener.emit(this.sueldo);
+  }
+  emitirBilletera() {
+    this.billeteraListener.emit(this.miBilletera);
+  }
+  emitirGastado() {
+    this.gastadoListener.emit(this.gastado);
+  }
+
+  getGastado() {
+    return this.gastado;
+  }
+
+  getSueldo() {
+    return this.sueldo;
+  }
+
+  getBilletera() {
+    return this.miBilletera;
   }
 }

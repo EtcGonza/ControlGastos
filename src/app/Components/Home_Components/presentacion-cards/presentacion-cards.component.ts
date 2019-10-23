@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Billetera } from '../../../Models/billeteraInterface';
 
 @Component({
   selector: 'app-presentacion-cards',

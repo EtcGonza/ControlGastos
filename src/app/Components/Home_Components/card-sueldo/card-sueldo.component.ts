@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { MiBilleteraService } from '../../../Services/mi-billetera.service';
 
 @Component({
   selector: 'app-card-sueldo',
@@ -7,8 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardSueldoComponent implements OnInit {
 
-  constructor() { }
+  sueldo = 0;
 
-  ngOnInit() {}
+  constructor(private miBilleteraService: MiBilleteraService) { }
+
+  ngOnInit() {
+    this.sueldo = this.miBilleteraService.getSueldo();
+    this.obtenerCambios();
+  }
+
+  obtenerCambios() {
+    this.miBilleteraService.sueldoListener.subscribe( (sueldo: number) => {
+      console.log('recibo: ', sueldo);
+      this.sueldo = sueldo;
+    });
+  }
 
 }

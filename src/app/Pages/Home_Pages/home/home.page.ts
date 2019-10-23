@@ -9,13 +9,7 @@ import { Billetera } from '../../../Models/billeteraInterface';
 })
 export class HomePage implements OnInit{
 
-  private miBilletera: Billetera;
-
-  constructor(private miBilleteraService: MiBilleteraService) {}
-
-  ngOnInit() {
-    this.miBilleteraService.billeteraListener.subscribe( (miBilletera: Billetera) => {
-        this.miBilletera = miBilletera;
-      });
-  }
+  constructor() {}
+  
+  ngOnInit() {}
 }
