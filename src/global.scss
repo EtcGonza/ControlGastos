@@ -75,6 +75,18 @@ ion-searchbar {
     font-weight: bold;
 }
 
+.titulo {
+    font-size: 3.8rem;
+    font-weight: bold;
+    padding: 0;
+}
+
+ion-toolbar {
+    --background: transparent;
+    background-color: transparent;
+    margin-top: 1rem;
+}
+
 ///////////////////////////////
 .icono-fab {
     width: 3rem;

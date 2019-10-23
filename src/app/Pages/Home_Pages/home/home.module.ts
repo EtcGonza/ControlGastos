@@ -2,11 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { ComponentsModule } from '../../../Components/components.module';
+import { ModalMiBilleteraPage } from '../modal-mi-billetera/modal-mi-billetera.page';
 
+const routes: Routes = [
+  {
+    path: '',
+    component: HomePage,
+  }
+];
 
 @NgModule({
   imports: [
@@ -14,12 +21,8 @@ import { ComponentsModule } from '../../../Components/components.module';
     FormsModule,
     IonicModule,
     ComponentsModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: HomePage
-      }
-    ])
+    // ModalMiBilleteraPage,
+    RouterModule.forChild(routes)
   ],
   declarations: [HomePage]
 })

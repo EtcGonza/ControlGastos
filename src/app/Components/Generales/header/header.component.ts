@@ -9,8 +9,9 @@ export class HeaderComponent implements OnInit {
 
   @Input()backButton = true;
   @Input() titulo: string;
+  @Input() posicion = 'izquierda';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 

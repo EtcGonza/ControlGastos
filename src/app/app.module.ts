@@ -13,13 +13,13 @@ import { IonicStorageModule } from '@ionic/storage';
 
 // Componentes
 import { AppComponent } from './app.component';
-import { DeudasTipoPipe } from './Pipes/deudas-tipo.pipe';
+import { ModalMiBilleteraPageModule } from './Pages/Home_Pages/modal-mi-billetera/modal-mi-billetera.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule,
-            FormsModule, ComponentsModule, HttpClientModule, IonicStorageModule.forRoot()],
+            FormsModule, ComponentsModule, HttpClientModule, IonicStorageModule.forRoot(), ModalMiBilleteraPageModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -28,4 +28,5 @@ import { DeudasTipoPipe } from './Pipes/deudas-tipo.pipe';
   bootstrap: [AppComponent],
   exports: []
 })
+
 export class AppModule {}

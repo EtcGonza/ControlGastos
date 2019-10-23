@@ -1,5 +1,20 @@
 <ion-content class="fondo1">
-    <app-header [titulo]="'Home'" [backButton]="false"></app-header>
+
+    <!-- <app-header [titulo]="'Home'" [backButton]="false" [posicion]="'centro'"></app-header> -->
+
+    <ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-button (click)="presentModal()">
+                <ion-icon name="settings"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+        <ion-title class="titulo ion-text-center" color="light">
+            Home
+        </ion-title>
+    </ion-toolbar>
+
+
     <div class="contenedor-cards">
         <app-presentacion-cards></app-presentacion-cards>
     </div>

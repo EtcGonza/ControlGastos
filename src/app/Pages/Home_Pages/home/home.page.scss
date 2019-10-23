@@ -1,3 +1,15 @@
 .contenedor-cards {
     margin-bottom: 4.5rem;
 }
+
+.titulo {
+    font-size: 3.8rem;
+    font-weight: bold;
+    padding: 0;
+}
+
+ion-toolbar {
+    --background: transparent;
+    background-color: transparent;
+    margin-top: 1rem;
+}

@@ -4,6 +4,7 @@ import { Deuda } from '../Models/deudaInterface';
 import * as moment from 'moment';
 import 'moment/locale/pt-br';
 import { Storage } from '@ionic/storage';
+import { MiBilleteraService } from './mi-billetera.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class DeudaService {
   deudas: Deuda [] = [];
   deudasListener = new EventEmitter <Deuda []> ();
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage,
+              private billeteraService: MiBilleteraService) {
     this.cargarDeudasStorage();
   }
 
@@ -24,7 +26,7 @@ export class DeudaService {
       this.deudas = misDeudas;
       console.log('Existen Deudas');
     } else {
-      console.error('[WARNING] No hay deudas para cargar');
+      console.error('[WARNING] No hay deudas para cargar (Contexto: DEUDA SERVICE).');
       this.deudas = [];
     }
   }
@@ -36,8 +38,7 @@ export class DeudaService {
 
   crearDeuda(tipo: string , nombre: string, monto: number, sexo: string) {
 
-    // tslint:disable-next-line: prefer-const
-    let insertarDeuda: Deuda = this.setDeuda(nombre, monto, sexo);
+    const insertarDeuda: Deuda = this.setDeuda(nombre, monto, sexo);
 
     if (tipo === 'Pagar') {
       insertarDeuda.Tipo = 'Pagar';
@@ -99,8 +100,20 @@ export class DeudaService {
   }
 
   completarDeuda(deuda: Deuda) {
+
+    if (deuda.Tipo === 'Pagar') {
+    this.billeteraService.sumarGasto(deuda.Monto);
+    console.log('Reste a mi billetera');
+    } else if (deuda.Tipo === 'Cobrar') {
+    this.billeteraService.sumarMiBilletera(deuda.Monto);
+    console.log('Sume a mi billetera');
+    } else {
+      console.error('[ERROR] El tipo de deuda no era correcto (Contexto: DEUDA SERVICE).');
+    }
+
     deuda.Completada = true;
     deuda.FechaCompletado = moment().locale('es').format('L');
+    this.guardarDeudasStorage();
     this.deudasListener.emit(this.deudas);
   }
 
@@ -145,13 +158,4 @@ export class DeudaService {
 
   }
 
-  // editarDeuda(miDeuda: Deuda) {
-  //   const indexDeuda = this.deudas.findIndex ( elemento => elemento.id === miDeuda.id);
-  //   console.log(miDeuda.Sexo);
-  //   miDeuda.AvatarPath = this.asignarAvatar(miDeuda.Sexo);
-
-  //   this.deudas[indexDeuda] = miDeuda;
-  //   this.guardarDeudasStorage();
-  //   // this.deudasListener.emit(this.deudas);
-  // }
 }

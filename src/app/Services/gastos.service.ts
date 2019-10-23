@@ -3,6 +3,7 @@ import { GastoMes, Gasto, MisGastos, Mes } from '../Models/gastoInterface';
 import * as moment from 'moment';
 import { v4 as uuid } from 'uuid';
 import { Storage } from '@ionic/storage';
+import { MiBilleteraService } from './mi-billetera.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class GastosService {
   // gastosListener = new EventEmitter <MisGastos []> ();
   mesListener = new EventEmitter <GastoMes> ();
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage,
+              private billeteraService: MiBilleteraService) {
     this.cargarGastosStorage();
   }
 
@@ -124,6 +126,8 @@ export class GastosService {
       console.error('[ERROR] Tipo ingresado no Valido.');
       return;
     }
+
+    this.billeteraService.sumarGasto(gastoTemp.Monto);
 
     // Guardar en Storage
     this.guardarGastosStorage();
@@ -252,7 +256,7 @@ export class GastosService {
 
     // Guardar en Storage
     this.guardarGastosStorage();
-    console.log('Gasto eliminado:' , this.misGastos);
+    // console.log('Gasto eliminado:' , this.misGastos);
     this.mesListener.emit(mesActual.GastosMes);
   }
 

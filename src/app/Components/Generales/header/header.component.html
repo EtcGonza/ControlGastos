@@ -1,13 +1,9 @@
 <ion-toolbar>
-    <!-- <ion-buttons slot="end">
-        <ion-menu-button color="light" menu="menuPrincipal"></ion-menu-button>
-    </ion-buttons> -->
-
     <ion-buttons *ngIf="backButton" slot="start">
         <ion-back-button text="" color="light" defaultHref="/"></ion-back-button>
     </ion-buttons>
 
-    <ion-title class="titulo ion-text-left" color="light">
+    <ion-title class="titulo" [ngClass]="{'ion-text-left': posicion=='izquierda', 'ion-text-center': posicion=='centro'}" color="light">
         {{this.titulo}}
     </ion-title>
 </ion-toolbar>

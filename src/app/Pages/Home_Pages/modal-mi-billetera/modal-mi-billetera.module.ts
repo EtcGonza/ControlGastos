@@ -1,30 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModalIconGastosPage } from './modal-icon-gastos.page';
+import { ModalMiBilleteraPage } from './modal-mi-billetera.page';
 import { ComponentsModule } from '../../../Components/components.module';
-import { PipesModule } from '../../../Pipes/pipes.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: ModalIconGastosPage
+    component: ModalMiBilleteraPage
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     ComponentsModule,
-    PipesModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ModalIconGastosPage],
+  entryComponents: [ModalMiBilleteraPage],
+  exports: [ModalMiBilleteraPage],
+  declarations: [ModalMiBilleteraPage]
 })
-export class ModalIconGastosPageModule {}
+export class ModalMiBilleteraPageModule {}

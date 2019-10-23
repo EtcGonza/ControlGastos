@@ -37,6 +37,7 @@ export class MiBilleteraService {
   sumarGasto(monto: number) {
   this.gastado = this.gastado + monto;
   this.miBilletera = this.miBilletera - monto;
+  console.log('SumarGasto Llamado');
   this.actualizarBilletera();
   this.emitirGastado();
   this.emitirBilletera();
