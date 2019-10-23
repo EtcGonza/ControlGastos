@@ -1,28 +1,30 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Billetera } from '../Models/billeteraInterface';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MiBilleteraService {
 
-  miBilletera = 15000;  // Corresponde al dinero actual que tengo.
-  gastado = 2000;       // Corresponde al dinero que gaste.
-  sueldo = 20000;       // Corresponde al dinero con el que empece el mes.
-  // objBilletera: Billetera = {
-  //   MiBilletera: 2222,
-  //   Gastado: 1111,
-  //   Sueldo: 150
-  // };
+  miBilletera = 0;   // Corresponde al dinero actual que tengo.
+  gastado = 0;       // Corresponde al dinero que gaste.
+  sueldo = 0;        // Corresponde al dinero con el que empece el mes.
+  objBilletera: Billetera = {
+    MiBilletera: 0,
+    Gastado: 0,
+    Sueldo: 0
+  };
 
   objBilleteraListener = new EventEmitter <Billetera> ();
   billeteraListener = new EventEmitter <number> ();
   sueldoListener = new EventEmitter <number> ();
   gastadoListener = new EventEmitter <number> ();
 
-  constructor() {
-    this.actualizarBilletera();
-    this.emitirBilletera();
+  constructor(private storage: Storage) {
+    this.cargarGastosStorage();
+    // this.actualizarBilletera();
+    // this.emitirBilletera();
   }
 
   // Funcion para agregar el sueldo iniciar del mes.
@@ -37,7 +39,6 @@ export class MiBilleteraService {
   sumarGasto(monto: number) {
   this.gastado = this.gastado + monto;
   this.miBilletera = this.miBilletera - monto;
-  console.log('SumarGasto Llamado');
   this.actualizarBilletera();
   this.emitirGastado();
   this.emitirBilletera();
@@ -50,17 +51,20 @@ export class MiBilleteraService {
   }
 
   actualizarBilletera() {
-    // this.objBilletera.Gastado = this.gastado;
-    // this.objBilletera.MiBilletera = this.miBilletera;
-    // this.objBilletera.Sueldo = this.sueldo;
+    this.objBilletera.Gastado = this.gastado;
+    this.objBilletera.MiBilletera = this.miBilletera;
+    this.objBilletera.Sueldo = this.sueldo;
+    this.guardarStorage();
   }
 
   emitirSueldo() {
     this.sueldoListener.emit(this.sueldo);
   }
+
   emitirBilletera() {
     this.billeteraListener.emit(this.miBilletera);
   }
+
   emitirGastado() {
     this.gastadoListener.emit(this.gastado);
   }
@@ -75,5 +79,44 @@ export class MiBilleteraService {
 
   getBilletera() {
     return this.miBilletera;
+  }
+
+  guardarStorage() {
+    this.storage.set('billetera', this.objBilletera);
+    console.log('Se guardo la billetera en el storage');
+  }
+
+  async cargarGastosStorage() {
+    const miBilletera = await this.storage.get('billetera');
+
+    if (miBilletera) {
+      this.objBilletera = miBilletera;
+      console.log('Se cargo una billetera del storage');
+    } else {
+      console.log('No existen billetera en el storage');
+      this.miBilletera = null;
+    }
+
+    this.setearEstadoBilletera();
+
+  }
+
+  setearEstadoBilletera() {
+
+    if (this.objBilletera) {
+      this.sueldo = this.objBilletera.Sueldo;
+      this.miBilletera = this.objBilletera.MiBilletera;
+      this.gastado = this.objBilletera.Gastado;
+    } else {
+      this.objBilletera = {
+        MiBilletera: 0,
+        Gastado: 0,
+        Sueldo: 0
+      };
+    }
+
+    this.emitirBilletera();
+    this.emitirGastado();
+    this.emitirSueldo();
   }
 }
