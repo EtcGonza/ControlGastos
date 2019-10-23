@@ -19,7 +19,7 @@ export class TuBilleteraComponent implements OnInit {
 
   obtenerCambios() {
     this.miBilleteraService.billeteraListener.subscribe( (billetera: number) => {
-      console.log('recibo: ', billetera);
+      // console.log('recibo: ', billetera);
       this.saldoBilletera = billetera;
     });
   }

@@ -119,4 +119,12 @@ export class MiBilleteraService {
     this.emitirGastado();
     this.emitirSueldo();
   }
+
+  billeteraVacia() {
+    if (this.miBilletera === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

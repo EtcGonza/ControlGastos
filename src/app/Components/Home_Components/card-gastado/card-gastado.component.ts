@@ -19,7 +19,7 @@ export class CardGastadoComponent implements OnInit {
 
   obtenerCambios() {
     this.miBilleteraService.gastadoListener.subscribe( (gastado: number) => {
-      console.log('recibo: ', gastado);
+      // console.log('recibo: ', gastado);
       this.gastado = gastado;
     });
   }

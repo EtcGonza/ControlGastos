@@ -19,7 +19,7 @@ export class CardSueldoComponent implements OnInit {
 
   obtenerCambios() {
     this.miBilleteraService.sueldoListener.subscribe( (sueldo: number) => {
-      console.log('recibo: ', sueldo);
+      // console.log('recibo: ', sueldo);
       this.sueldo = sueldo;
     });
   }
