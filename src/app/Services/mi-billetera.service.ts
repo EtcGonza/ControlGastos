@@ -18,16 +18,21 @@ export class MiBilleteraService {
   iniciarSueldo(monto: number) {
   this.sueldo = monto;
   this.miBilletera = monto;
-  this.billeteraListener.emit();
+  this.actualizarBilletera();
+  this.billeteraListener.emit(this.objBilletera);
   }
 
   sumarGasto(monto: number) {
   this.gastado = this.gastado + monto;
   this.miBilletera = this.miBilletera - monto;
+  this.actualizarBilletera();
+  this.billeteraListener.emit(this.objBilletera);
   }
 
   sumarMiBilletera(monto: number) {
   this.miBilletera = this.miBilletera + monto;
+  this.actualizarBilletera();
+  this.billeteraListener.emit(this.objBilletera);
   }
 
   actualizarBilletera() {
