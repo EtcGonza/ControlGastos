@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Billetera } from '../Models/billeteraInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,8 @@ export class MiBilleteraService {
   private miBilletera = 0; // Corresponde al dinero actual que tengo.
   private gastado = 0;     // Corresponde al dinero que gaste.
   private sueldo = 0;      // Corresponde al dinero con el que empece el mes.
+  private objBilletera: Billetera;
+  public billeteraListener = new EventEmitter <Billetera> ();
 
   constructor() {}
 
@@ -15,6 +18,7 @@ export class MiBilleteraService {
   iniciarSueldo(monto: number) {
   this.sueldo = monto;
   this.miBilletera = monto;
+  this.billeteraListener.emit();
   }
 
   sumarGasto(monto: number) {
@@ -24,5 +28,11 @@ export class MiBilleteraService {
 
   sumarMiBilletera(monto: number) {
   this.miBilletera = this.miBilletera + monto;
+  }
+
+  actualizarBilletera() {
+    this.objBilletera.Gastado = this.gastado;
+    this.objBilletera.MiBilletera = this.miBilletera;
+    this.objBilletera.Sueldo = this.sueldo;
   }
 }
