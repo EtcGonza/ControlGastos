@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { MiBilleteraService } from '../../../Services/mi-billetera.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { MiBilleteraService } from '../../../Services/mi-billetera.service';
 export class AgregarSaldoPage implements OnInit {
 
   constructor(private alertController: AlertController,
-              private billeteraService: MiBilleteraService) {}
+              private billeteraService: MiBilleteraService,
+              private NavCtrl: NavController) {}
 
   ngOnInit() {
     this.presentarAlert();
@@ -31,8 +32,10 @@ export class AgregarSaldoPage implements OnInit {
       buttons: [
         {
           text: 'Confirmar',
-          handler: () => {
-            console.log('Confirm Ok');
+          handler: (alertData) => {
+            this.billeteraService.iniciarSueldo(alertData.dinero);
+            this.NavCtrl.navigateRoot('/home');
+            // console.log('Se ingreso ', alertData.dinero);
           }
         }
       ]

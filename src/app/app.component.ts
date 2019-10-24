@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -10,7 +10,7 @@ import { MiBilleteraService } from './Services/mi-billetera.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -19,16 +19,24 @@ export class AppComponent {
     private navCtrl: NavController
   ) {
     this.initializeApp();
-    console.log('¿La billetera esta vacia?', this.billeteraService.billeteraVacia());
-    if (this.billeteraService.billeteraVacia() === true) {
-      this.navCtrl.navigateRoot('/agregar-saldo');
-    } else {
+    }
+
+  async ngOnInit() {
+
+    const billeteraVacia = await this.billeteraService.billeteraVacia();
+    console.log('¿La billetera esta vacia?', billeteraVacia);
+
+    if (billeteraVacia === false) {
       console.log('No fue necesario agregar saldo');
+      this.navCtrl.navigateRoot('/home');
+    } else {
+      console.log('Fue necesario agregar saldo');
+      this.navCtrl.navigateRoot('/agregar-saldo');
     }
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+   this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

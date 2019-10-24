@@ -23,8 +23,6 @@ export class MiBilleteraService {
 
   constructor(private storage: Storage) {
     this.cargarGastosStorage();
-    // this.actualizarBilletera();
-    // this.emitirBilletera();
   }
 
   // Funcion para agregar el sueldo iniciar del mes.
@@ -34,6 +32,7 @@ export class MiBilleteraService {
   this.actualizarBilletera();
   this.emitirSueldo();
   this.emitirBilletera();
+  this.guardarStorage();
   }
 
   sumarGasto(monto: number) {
@@ -87,18 +86,16 @@ export class MiBilleteraService {
   }
 
   async cargarGastosStorage() {
-    const miBilletera = await this.storage.get('billetera');
+    const existeBilletera = await this.storage.get('billetera');
 
-    if (miBilletera) {
-      this.objBilletera = miBilletera;
+    if (existeBilletera) {
+      this.objBilletera = existeBilletera;
       console.log('Se cargo una billetera del storage');
     } else {
       console.log('No existen billetera en el storage');
-      this.miBilletera = null;
     }
 
     this.setearEstadoBilletera();
-
   }
 
   setearEstadoBilletera() {
@@ -120,8 +117,11 @@ export class MiBilleteraService {
     this.emitirSueldo();
   }
 
-  billeteraVacia() {
-    if (this.miBilletera === 0) {
+  async billeteraVacia() {
+
+   await this.cargarGastosStorage();
+
+   if (this.miBilletera === 0) {
       return true;
     } else {
       return false;
