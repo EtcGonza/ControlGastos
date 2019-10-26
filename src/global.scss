@@ -46,6 +46,10 @@ ion-searchbar {
 }
 
 // Utilidades Globales 
+.textoBlanco {
+    color: white;
+}
+
 .texto-bold {
     font-weight: bold;
 }
@@ -91,4 +95,12 @@ ion-toolbar {
 .icono-fab {
     width: 3rem;
     height: 3rem;
+}
+
+.toastGrande {
+    --width: 70%;
+}
+
+.toastChico {
+    --width: 50%;
 }

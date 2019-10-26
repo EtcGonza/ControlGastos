@@ -90,7 +90,7 @@ export class MiBilleteraService {
 
     if (existeBilletera) {
       this.objBilletera = existeBilletera;
-      console.log('Se cargo una billetera del storage');
+      // console.log('Se cargo una billetera del storage');
     } else {
       console.log('No existen billetera en el storage');
     }

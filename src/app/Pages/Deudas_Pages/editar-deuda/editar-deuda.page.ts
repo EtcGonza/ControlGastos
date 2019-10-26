@@ -4,6 +4,7 @@ import { DeudaService } from '../../../Services/deuda.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Deuda } from '../../../Models/deudaInterface';
+import { ToastService } from '../../../Services/toast.service';
 
 @Component({
   selector: 'app-editar-deuda',
@@ -25,7 +26,8 @@ export class EditarDeudaPage implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private deudaService: DeudaService,
               private navController: NavController,
-              private activatedRoute: ActivatedRoute) {}
+              private activatedRoute: ActivatedRoute,
+              private toastService: ToastService) {}
 
   ngOnInit() {
     this.idDeuda = this.activatedRoute.snapshot.paramMap.get('idDeuda');
@@ -38,6 +40,7 @@ export class EditarDeudaPage implements OnInit {
     if (this.formularioDeuda.invalid) { return; }
     this.guardarCambios();
     this.deudaService.guardarDeudasStorage();
+    this.toastService.editarDeudaToast();
   }
 
   buscarDeuda() {

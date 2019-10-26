@@ -24,13 +24,13 @@ export class AppComponent implements OnInit{
   async ngOnInit() {
 
     const billeteraVacia = await this.billeteraService.billeteraVacia();
-    console.log('¿La billetera esta vacia?', billeteraVacia);
+    // console.log('¿La billetera esta vacia?', billeteraVacia);
 
     if (billeteraVacia === false) {
-      console.log('No fue necesario agregar saldo');
+      // console.log('No fue necesario agregar saldo');
       this.navCtrl.navigateRoot('/home');
     } else {
-      console.log('Fue necesario agregar saldo');
+      // console.log('Fue necesario agregar saldo');
       this.navCtrl.navigateRoot('/agregar-saldo');
     }
   }

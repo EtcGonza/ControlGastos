@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { v4 as uuid } from 'uuid';
 import { Storage } from '@ionic/storage';
 import { MiBilleteraService } from './mi-billetera.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class GastosService {
   mesListener = new EventEmitter <GastoMes> ();
 
   constructor(private storage: Storage,
-              private billeteraService: MiBilleteraService) {
+              private billeteraService: MiBilleteraService,
+              private toastService: ToastService) {
     this.cargarGastosStorage();
   }
 
@@ -131,7 +133,8 @@ export class GastosService {
 
     // Guardar en Storage
     this.guardarGastosStorage();
-    console.log('Guarde en Storage');
+    this.toastService.nuevoGasto();
+    // console.log('Guarde en Storage');
 
   }
 
@@ -256,12 +259,14 @@ export class GastosService {
 
     // Guardar en Storage
     this.guardarGastosStorage();
-    // console.log('Gasto eliminado:' , this.misGastos);
+    this.toastService.borrarGasto();
     this.mesListener.emit(mesActual.GastosMes);
+    // console.log('Gasto eliminado:' , this.misGastos);
   }
 
   guardarGastosStorage() {
     this.storage.set('misgastos', this.misGastos);
+    console.log('Guardado');
   }
 
   async cargarGastosStorage() {

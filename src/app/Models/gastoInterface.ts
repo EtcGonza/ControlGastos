@@ -22,10 +22,14 @@ export interface Gasto {
     Id: string;
     Descripcion: string;
     Monto: number;
-    Categoria: string;
     Tipo: string;
     Eliminado: boolean;
     FechaCreacion: string;
+    Categoria: string;
     IconoPath: string;
 }
 
+export interface IconoObj {
+    Categoria: string;
+    Path: string;
+}

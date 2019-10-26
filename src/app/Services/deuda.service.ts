@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import 'moment/locale/pt-br';
 import { Storage } from '@ionic/storage';
 import { MiBilleteraService } from './mi-billetera.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class DeudaService {
   deudasListener = new EventEmitter <Deuda []> ();
 
   constructor(private storage: Storage,
-              private billeteraService: MiBilleteraService) {
+              private billeteraService: MiBilleteraService,
+              private toastService: ToastService) {
     this.cargarDeudasStorage();
   }
 
@@ -60,6 +62,7 @@ export class DeudaService {
     }
 
     this.guardarDeudasStorage();
+    this.toastService.crearDeudaToast();
   }
 
   asignarAvatar(sexo: string) {
@@ -94,6 +97,7 @@ export class DeudaService {
         this.deudas.splice(index, 1);
         this.deudasListener.emit(this.deudas);
         this.guardarDeudasStorage();
+        this.toastService.borrarDeudaToast();
       } else {
         console.log('Error al querer eliminar la deuda');
       }
@@ -109,12 +113,14 @@ export class DeudaService {
     console.log('Sume a mi billetera');
     } else {
       console.error('[ERROR] El tipo de deuda no era correcto (Contexto: DEUDA SERVICE).');
+      return;
     }
 
     deuda.Completada = true;
     deuda.FechaCompletado = moment().locale('es').format('L');
     this.guardarDeudasStorage();
     this.deudasListener.emit(this.deudas);
+    this.toastService.completarDeudaToast();
   }
 
   setDeuda(nombre: string, monto: number, sexo: string) {
