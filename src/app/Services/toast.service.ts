@@ -16,7 +16,6 @@ export class ToastService {
       color: 'fucsia',
       position: 'top',
       showCloseButton: false,
-      translucent: true,
       mode: 'ios',
       cssClass: ['textoBlanco', 'centrar-texto', 'toastGrande'],
       buttons: [
@@ -37,7 +36,6 @@ export class ToastService {
       color: 'rojo',
       position: 'top',
       showCloseButton: false,
-      translucent: true,
       mode: 'ios',
       cssClass: ['textoBlanco', 'centrar-texto', 'toastGrande'],
       buttons: [
@@ -58,7 +56,6 @@ export class ToastService {
       color: 'fucsia',
       position: 'top',
       showCloseButton: false,
-      translucent: true,
       mode: 'ios',
       cssClass: ['textoBlanco', 'centrar-texto', 'toastGrande'],
       buttons: [
@@ -79,7 +76,6 @@ export class ToastService {
       color: 'fucsia',
       position: 'top',
       showCloseButton: false,
-      translucent: true,
       mode: 'ios',
       cssClass: ['textoBlanco', 'centrar-texto', 'toastChico'],
       buttons: [
@@ -100,7 +96,6 @@ export class ToastService {
       color: 'fucsia',
       position: 'top',
       showCloseButton: false,
-      translucent: true,
       mode: 'ios',
       cssClass: ['textoBlanco', 'centrar-texto', 'toastChico'],
       buttons: [
@@ -121,7 +116,6 @@ export class ToastService {
       color: 'rojo',
       position: 'top',
       showCloseButton: false,
-      translucent: true,
       mode: 'ios',
       cssClass: ['textoBlanco', 'centrar-texto', 'toastChico'],
       buttons: [
@@ -142,7 +136,6 @@ export class ToastService {
       color: 'fucsia',
       position: 'top',
       showCloseButton: false,
-      translucent: true,
       mode: 'ios',
       cssClass: ['textoBlanco', 'centrar-texto', 'toastChico'],
       buttons: [

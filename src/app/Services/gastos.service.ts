@@ -284,4 +284,5 @@ export class GastosService {
     const mesActual = this.getMesActual();
     return mesActual.GastosMes.Gastos.find( elemento => elemento.Id === idGasto);
   }
+
 }
